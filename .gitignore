@@ -1,0 +1,26 @@
+# dependencies
+node_modules/
+
+# environment variables
+.env
+
+# macOS
+.DS_Store
+
+# editor
+.vscode/
+
+# AI Agent Prompt files
+AGENTS.local.md
+CLAUDE.local.md
+.spec/
+.tasks/
+.claude/
+.playwright-mcp
+MEMORY.md
+
+# Docker data
+docker-data/
+
+# Development planning
+TODO.md
