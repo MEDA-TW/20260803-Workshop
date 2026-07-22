@@ -31,4 +31,4 @@ RAG 回應格式：`answer`、`answer_status`、`retrieved_chunk_ids`、`citatio
 
 ## 錯誤與安全
 
-HTTP 失敗要留在 manifest，不得猜測替代網址；解析異常標示 `needs_review`；非公開、疑似個資或白名單外文件標示 `excluded`。MCP 僅可讀取指定課程資料夾與公開來源。
+HTTP 失敗要留在 manifest，不得猜測替代網址；解析異常標示 `needs_review`；需要登入、受限或白名單外文件標示 `excluded`。公開網頁與附件中的公開聯絡資訊可隨原始資料保留。MCP 僅可讀取指定課程資料夾與公開來源。
