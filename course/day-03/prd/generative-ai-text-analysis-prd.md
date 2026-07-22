@@ -12,7 +12,7 @@
 
 ## 功能需求
 
-1. 依講師提供的 seed URL 白名單爬取公開 HTML 與附件，記錄 manifest。
+1. 從講師提供的公開起始網址確認爬取範圍，建立 `crawl_scope.json` 後爬取公開 HTML 與附件，記錄 manifest。
 2. 以 Codex 的 MarkItDown MCP 將成功下載的本機檔案轉為 Markdown。
 3. 檢查轉換品質，並對每份文件設定 `ready_for_analysis`、`needs_review` 或 `excluded`。
 4. 以 metadata 與 chunks 產生摘要、分類、行政資訊擷取與主題分析。
@@ -21,7 +21,7 @@
 
 ## 非目標與驗收
 
-不做全校爬取、登入後資料、白名單外內容、正式上線服務或必要向量資料庫。無需登入即可存取的公開網頁、公開附件及其公開聯絡資訊可依 seed URL 範圍蒐集。原始檔不可覆寫；所有衍生結果保留 `document_id`、`source_url`、`crawled_at`。最終成果須完成 README 所列五項繳交物。
+不做全校爬取、登入後資料、確認範圍外內容、正式上線服務或必要向量資料庫。無需登入即可存取的公開網頁、公開附件及其公開聯絡資訊可依 `crawl_scope.json` 蒐集。原始檔不可覆寫；所有衍生結果保留 `document_id`、`source_url`、`crawled_at`。最終成果須完成 README 所列五項繳交物。
 
 | 評量面向 | 比重 |
 | --- | ---: |

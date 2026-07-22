@@ -2,11 +2,11 @@
 
 ## 輸入
 
-`data/seeds/seed_urls.csv`。
+`data/manifests/crawl_scope.json`。
 
 ## 提示詞
 
-> 依 seed URL 的 `allowed_hosts`、路徑、頁數、附件數與格式限制爬取公開內容。`allowed_hosts` 是以分號分隔的完整主機名稱清單；只能跟隨其中列出的主機，不能自動放寬成同一根網域或其他子網域。格式判定不可只看 URL 副檔名：要以 HTTP `Content-Type`、`Content-Disposition` 的檔名，以及 HTML 連結的 `title`／可見文字交叉判定 HTML、PDF 或 DOCX；若三者無法確認格式，記錄為 `excluded`，不要下載。將原始檔存於 `data/raw/`，並建立 `data/manifests/crawl_manifest.json`。每筆均記錄 document_id、source_url、source_type、crawled_at、raw_path、HTTP 結果與狀態；不可跟隨白名單外網址、不可登入、不可覆寫原始檔。
+> 依 `crawl_scope.json` 的 `allowed_hosts`、路徑、頁數、附件數與格式限制爬取公開內容。`allowed_hosts` 是完整主機名稱清單；只能跟隨其中列出的主機，不能自動放寬成同一根網域或其他子網域。格式判定不可只看 URL 副檔名：要以 HTTP `Content-Type`、`Content-Disposition` 的檔名，以及 HTML 連結的 `title`／可見文字交叉判定 HTML、PDF 或 DOCX；若三者無法確認格式，記錄為 `excluded`，不要下載。將原始檔存於 `data/raw/`，並建立 `data/manifests/crawl_manifest.json`。每筆均記錄 document_id、scope_id、source_url、source_type、crawled_at、raw_path、HTTP 結果與狀態；不可跟隨範圍外網址、不可登入、不可覆寫原始檔。
 
 ## 輸出
 

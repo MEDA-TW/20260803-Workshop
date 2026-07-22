@@ -3,7 +3,7 @@
 ## 系統流程
 
 ```text
-seed allowlist → crawler → raw + manifest → MarkItDown MCP → markdown
+start URL → crawl scope → crawler → raw + manifest → MarkItDown MCP → markdown
 → quality check → processed chunks → AI analysis / retrieval → cited answer
 → query log → improvement backlog
 ```
@@ -14,14 +14,14 @@ seed allowlist → crawler → raw + manifest → MarkItDown MCP → markdown
 
 | 位置 | 責任 |
 | --- | --- |
-| `data/seeds/` | 網域、路徑、格式與數量上限。 |
+| `data/manifests/crawl_scope.json` | 起始網址、網域、路徑、格式與數量上限。 |
 | `data/raw/` | 不可變更的原始檔。 |
 | `data/manifests/` | 來源、時間、路徑、HTTP 結果與爬取狀態。 |
 | `data/markdown/` | MarkItDown 輸出與品質檢查紀錄。 |
 | `data/processed/` | 可檢索 chunks；保留完整 provenance。 |
 | `analysis/`、`rag/`、`feedback/` | 分析證據、問答證據與改善決策。 |
 
-每筆 seed 至少有 `seed_id`、`start_url`、`allowed_hosts`、`allowed_path_prefix`、`allowed_formats`、`max_pages`、`max_attachments`；`allowed_hosts` 以分號分隔完整主機名稱，不可自動擴大為其他子網域。每筆 manifest 至少有 `document_id`、`seed_id`、`source_url`、`source_type`、`crawled_at`、`raw_path`、`crawl_status`；每筆 chunk 至少有 `chunk_id`、`document_id`、`source_url`、`crawled_at`、`markdown_path`、`section_heading`、`page_or_anchor`、`chunk_text`、`quality_status`。處理狀態依序為 `collected`、`parsed`、`needs_review`、`ready_for_analysis`、`excluded`；只有 `ready_for_analysis` 可進入檢索。
+`crawl_scope.json` 至少有 `scope_id`、`start_url`、`allowed_hosts`、`allowed_path_prefix`、`allowed_formats`、`max_pages`、`max_attachments`、`created_at`；`allowed_hosts` 為完整主機名稱陣列，不可自動擴大為其他子網域。每筆 manifest 至少有 `document_id`、`scope_id`、`source_url`、`source_type`、`crawled_at`、`raw_path`、`crawl_status`；每筆 chunk 至少有 `chunk_id`、`document_id`、`source_url`、`crawled_at`、`markdown_path`、`section_heading`、`page_or_anchor`、`chunk_text`、`quality_status`。處理狀態依序為 `collected`、`parsed`、`needs_review`、`ready_for_analysis`、`excluded`；只有 `ready_for_analysis` 可進入檢索。
 
 ## RAG 與回饋契約
 

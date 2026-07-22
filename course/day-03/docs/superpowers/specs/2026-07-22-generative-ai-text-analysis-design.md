@@ -19,7 +19,7 @@ RAG 是資料品質與可用性的驗證應用，不是唯一或最終成果。
 ### 範圍
 
 - 資料來源為講師指定的雲科大公開網站範圍。
-- 以講師提供的 seed URL 白名單開始，取得 HTML 與其公開附件（PDF、DOCX）。
+- 從講師提供的公開起始網址確認範圍後，取得 HTML 與其公開附件（PDF、DOCX）。
 - 爬取後保留原始檔與爬取紀錄，再以 MarkItDown MCP 轉為 Markdown。
 - 使用處理後文本完成摘要、分類、關鍵資訊擷取、主題分析與引用式問答。
 - 以課程提供的模擬問答紀錄分析系統缺口並提出改善。
@@ -40,7 +40,7 @@ RAG 是資料品質與可用性的驗證應用，不是唯一或最終成果。
 ## 資料流程與產物
 
 ```text
-seed URL
+起始網址與 crawl scope
 → 原始 HTML／附件 + crawl manifest
 → MarkItDown 產生 Markdown + 品質檢查
 → 清理、切分、metadata 的 processed JSON
@@ -97,7 +97,7 @@ day-03/
 ├── prd/generative-ai-text-analysis-prd.md
 ├── sdd/generative-ai-text-analysis-sdd.md
 ├── prompts/
-│   ├── 00-create-project-and-seed-url.md
+│   ├── 00-create-project-and-start-url.md
 │   ├── 01-crawl-specified-site.md
 │   ├── 02-parse-with-markitdown.md
 │   ├── 03-process-and-analyze-text.md
