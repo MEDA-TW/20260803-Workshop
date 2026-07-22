@@ -51,10 +51,10 @@ seed URL
 
 每一層皆保留，不覆蓋前一層。任何分析結論與問答答案都能回溯至原始網址、擷取時間、原始檔與 Markdown 段落。
 
-建議專案骨架：
+每組自行建立專案骨架，例如 `team-01-project/`：
 
 ```text
-project-template/
+team-01-project/
 ├── data/
 │   ├── seeds/
 │   ├── raw/
@@ -109,7 +109,7 @@ day-03/
 │   ├── 03-ai-text-analysis.md
 │   ├── 04-cited-rag-qa.md
 │   └── 05-feedback-to-improvement.md
-└── project-template/
+└── team-xx-project/
 ```
 
 每份提示詞固定交代任務目的、輸入、資料邊界、預期輸出、驗收條件與失敗回報要求。

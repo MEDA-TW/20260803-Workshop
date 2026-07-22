@@ -52,16 +52,33 @@ RAG 是驗證資料是否可用的一環；本日成果不只是一個 chatbot�
 | RAG 問答 | [04-build-cited-rag](prompts/04-build-cited-rag.md) | [04-cited-rag-qa](exercises/04-cited-rag-qa.md) |
 | 回饋改善 | [05-analyze-query-feedback](prompts/05-analyze-query-feedback.md) | [05-feedback-to-improvement](exercises/05-feedback-to-improvement.md) |
 
-## 教材與專案模板
+## 教材文件
 
 - [PRD](prd/generative-ai-text-analysis-prd.md)：課程案例、需求與驗收標準。
 - [SDD](sdd/generative-ai-text-analysis-sdd.md)：資料流程、檔案責任與資料契約。
-- [專案模板](project-template/README.md)：學員共同使用的資料夾與範例資料。
-- [資料字典](project-template/docs/data-dictionary.md)：欄位與狀態定義。
+
+## 建立小組實作資料夾
+
+clone 課程 repo 後，每組在 `course/day-03/` 下自行建立工作資料夾，例如 `team-01-project/`；不要改動講義、提示詞或練習檔。
+
+```text
+team-01-project/
+├── data/seeds/       核准的起始網址與範圍
+├── data/raw/         不可覆寫的 HTML、PDF、DOCX
+├── data/manifests/   爬取來源、時間、路徑與狀態
+├── data/markdown/    MarkItDown 輸出
+├── data/processed/   metadata 與 chunks
+├── analysis/
+├── rag/
+├── feedback/
+└── docs/
+```
+
+每一筆衍生資料保留 `document_id`、`source_url`、`crawled_at`；可用的處理狀態為 `collected`、`parsed`、`needs_review`、`ready_for_analysis`、`excluded`。
 
 ## 最終繳交
 
-每組繳交一份 `project-template/` 的複本，並確認包含：
+每組繳交自己的 `team-xx-project/`，並確認包含：
 
 1. `data/seeds/` 的核准來源範圍、`data/raw/` 原始檔與 `data/manifests/crawl_manifest.json`。
 2. MarkItDown 產生的 `data/markdown/`，以及每份文件的品質檢查結論。

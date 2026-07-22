@@ -4,7 +4,7 @@
 
 **Goal:** Build a complete, reusable Day-03 course package for a source-traceable generative-AI text-analysis pipeline using Codex and the MarkItDown MCP.
 
-**Architecture:** The package separates teaching guidance (`README.md`, PRD, SDD, prompts, exercises) from the student deliverable (`project-template/`). The template preserves raw crawl outputs, MarkItDown conversions, processed document records, AI analysis, cited RAG evidence, and feedback-driven improvement decisions as separate layers.
+**Architecture:** The package separates teaching guidance (`README.md`, PRD, SDD, prompts, exercises) from each team's self-created `team-xx-project/`. The team project preserves raw crawl outputs, MarkItDown conversions, processed document records, AI analysis, cited RAG evidence, and feedback-driven improvement decisions as separate layers.
 
 **Tech Stack:** Markdown curriculum documents, JSON data contracts, Codex, MarkItDown MCP, learner-authored crawler and RAG prototype.
 

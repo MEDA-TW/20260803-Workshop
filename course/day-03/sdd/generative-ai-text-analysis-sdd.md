@@ -21,7 +21,7 @@ seed allowlist → crawler → raw + manifest → MarkItDown MCP → markdown
 | `data/processed/` | 可檢索 chunks；保留完整 provenance。 |
 | `analysis/`、`rag/`、`feedback/` | 分析證據、問答證據與改善決策。 |
 
-欄位定義以 [資料字典](../project-template/docs/data-dictionary.md) 為準。處理狀態依序為 `collected`、`parsed`、`needs_review`、`ready_for_analysis`、`excluded`；只有 `ready_for_analysis` 可進入檢索。
+每筆 manifest 至少有 `document_id`、`seed_id`、`source_url`、`source_type`、`crawled_at`、`raw_path`、`crawl_status`；每筆 chunk 至少有 `chunk_id`、`document_id`、`source_url`、`crawled_at`、`markdown_path`、`section_heading`、`page_or_anchor`、`chunk_text`、`quality_status`。處理狀態依序為 `collected`、`parsed`、`needs_review`、`ready_for_analysis`、`excluded`；只有 `ready_for_analysis` 可進入檢索。
 
 ## RAG 與回饋契約
 
