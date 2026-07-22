@@ -14,4 +14,4 @@ feedback/        問答紀錄與改善 backlog
 docs/            資料字典與作業說明
 ```
 
-在 Codex 中先確認 MarkItDown MCP 可用，再依 manifest 成功紀錄的 `raw_path` 取得本機 `file:` URI，轉換至 `data/markdown/`。任何衍生紀錄都必須保留 `document_id`、`source_url`、`crawled_at`。
+完成爬取並取得 manifest 成功紀錄後，在 Codex 以其 `raw_path` 取得本機 `file:` URI，確認 MarkItDown MCP 可用並轉換至 `data/markdown/`。任何衍生紀錄都必須保留 `document_id`、`source_url`、`crawled_at`。

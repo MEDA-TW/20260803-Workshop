@@ -35,7 +35,7 @@
 
 - [ ] **Step 1: Replace `README.md` with the final course overview**
 
-Include the approved six-stage flow, six time blocks, required Codex + MarkItDown MCP preflight, five learning outcomes, a link table to every prompt and exercise, three-layer final deliverable, submission checklist, and the explicit public-source/privacy boundary.
+Include the approved six-stage flow, six time blocks, Codex + MarkItDown MCP confirmation after the first successful crawl, five learning outcomes, a link table to every prompt and exercise, three-layer final deliverable, submission checklist, and the explicit public-source/privacy boundary.
 
 - [ ] **Step 2: Create the project-template README**
 
@@ -124,7 +124,7 @@ git commit -m "docs: complete day 03 requirements and system design"
 
 - [ ] **Step 1: Write the MCP preflight prompt**
 
-Require learners to verify that the MarkItDown MCP is available, convert one named local test file, save Markdown under `data/markdown/`, and report the tool name, input URI, output path, headings found, and any conversion limitation. It must stop and report when the MCP is unavailable.
+Require learners to use a successful crawl record to verify that the MarkItDown MCP is available, convert that local file, save Markdown under `data/markdown/`, and report the tool name, input URI, output path, headings found, and any conversion limitation. It must stop and report when the MCP is unavailable.
 
 - [ ] **Step 2: Write the crawling and parsing prompts**
 
@@ -235,7 +235,7 @@ Expected: no incomplete teaching copy; scope-limiting language may appear only t
 
 - [ ] **Step 3: Review the complete learner journey**
 
-Confirm in order: MCP preflight → bounded crawl → raw/manifest → Markdown/quality status → processed chunks → source-linked analysis → cited RAG answer → feedback diagnosis → allowed improvement action. Correct any broken path, field-name mismatch, or missing acceptance condition in the responsible file.
+Confirm in order: bounded crawl → raw/manifest → MCP confirmation with a successful crawl record → Markdown/quality status → processed chunks → source-linked analysis → cited RAG answer → feedback diagnosis → allowed improvement action. Correct any broken path, field-name mismatch, or missing acceptance condition in the responsible file.
 
 - [ ] **Step 4: Commit Task 5**
 

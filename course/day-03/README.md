@@ -34,9 +34,9 @@ RAG 是驗證資料是否可用的一環；本日成果不只是一個 chatbot�
 
 | 時段 | 主題 | 主要產出 |
 | --- | --- | --- |
-| 09:00–09:30 | 文本資料、來源與 MCP 預檢 | MarkItDown 測試紀錄 |
+| 09:00–09:30 | 文本資料、來源、爬取範圍與可追溯性 | seed URL 與爬取規則 |
 | 09:30–10:30 | 指定網站爬取 | 原始檔、crawl manifest |
-| 10:30–12:00 | Markdown 解析與品質檢查 | Markdown、品質狀態 |
+| 10:30–12:00 | 用剛爬取的文件確認 MCP、解析與品質檢查 | Markdown、品質狀態 |
 | 13:30–14:30 | 生成式 AI 文本分析 | processed chunks、分析表 |
 | 14:30–15:40 | 可引用的 RAG 問答 | 測試題、答案、來源證據 |
 | 15:40–16:30 | 回饋分析與展示 | 改善 backlog |
@@ -45,8 +45,8 @@ RAG 是驗證資料是否可用的一環；本日成果不只是一個 chatbot�
 
 | 階段 | 提示詞 | 練習 |
 | --- | --- | --- |
-| MCP 預檢 | [00-codex-mcp-setup](prompts/00-codex-mcp-setup.md) | 納入練習 02 前置 |
 | 爬取與 manifest | [01-crawl-specified-site](prompts/01-crawl-specified-site.md) | [01-crawl-and-manifest](exercises/01-crawl-and-manifest.md) |
+| MCP 確認（使用成功爬取的文件） | [00-codex-mcp-setup](prompts/00-codex-mcp-setup.md) | 納入練習 02 前置 |
 | 解析與檢查 | [02-parse-with-markitdown](prompts/02-parse-with-markitdown.md) | [02-markdown-quality-check](exercises/02-markdown-quality-check.md) |
 | 整理與分析 | [03-process-and-analyze-text](prompts/03-process-and-analyze-text.md) | [03-ai-text-analysis](exercises/03-ai-text-analysis.md) |
 | RAG 問答 | [04-build-cited-rag](prompts/04-build-cited-rag.md) | [04-cited-rag-qa](exercises/04-cited-rag-qa.md) |
