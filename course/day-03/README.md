@@ -45,9 +45,9 @@ RAG 是驗證資料是否可用的一環；本日成果不只是一個 chatbot�
 
 | 階段 | 提示詞 | 練習 |
 | --- | --- | --- |
+| 建立個人專案與 seed URL | [00-create-project-and-seed-url](prompts/00-create-project-and-seed-url.md) | 爬取前置 |
 | 爬取與 manifest | [01-crawl-specified-site](prompts/01-crawl-specified-site.md) | [01-crawl-and-manifest](exercises/01-crawl-and-manifest.md) |
-| MCP 確認（使用成功爬取的文件） | [00-codex-mcp-setup](prompts/00-codex-mcp-setup.md) | 納入練習 02 前置 |
-| 解析與檢查 | [02-parse-with-markitdown](prompts/02-parse-with-markitdown.md) | [02-markdown-quality-check](exercises/02-markdown-quality-check.md) |
+| 確認 MCP、解析與檢查 | [02-parse-with-markitdown](prompts/02-parse-with-markitdown.md) | [02-markdown-quality-check](exercises/02-markdown-quality-check.md) |
 | 整理與分析 | [03-process-and-analyze-text](prompts/03-process-and-analyze-text.md) | [03-ai-text-analysis](exercises/03-ai-text-analysis.md) |
 | RAG 問答 | [04-build-cited-rag](prompts/04-build-cited-rag.md) | [04-cited-rag-qa](exercises/04-cited-rag-qa.md) |
 | 回饋改善 | [05-analyze-query-feedback](prompts/05-analyze-query-feedback.md) | [05-feedback-to-improvement](exercises/05-feedback-to-improvement.md) |

@@ -111,7 +111,7 @@ git commit -m "docs: complete day 03 requirements and system design"
 ### Task 3: Create the Codex prompt pack
 
 **Files:**
-- Create: `prompts/00-codex-mcp-setup.md`
+- Create: `prompts/00-create-project-and-seed-url.md`
 - Create: `prompts/01-crawl-specified-site.md`
 - Create: `prompts/02-parse-with-markitdown.md`
 - Create: `prompts/03-process-and-analyze-text.md`
@@ -122,9 +122,9 @@ git commit -m "docs: complete day 03 requirements and system design"
 - Consumes: the directory layout and JSON field names created in Task 1.
 - Produces: six copyable Codex prompts that generate only outputs accepted by the exercises.
 
-- [ ] **Step 1: Write the MCP preflight prompt**
+- [ ] **Step 1: Write the project and seed URL prompt**
 
-Require learners to use a successful crawl record to verify that the MarkItDown MCP is available, convert that local file, save Markdown under `data/markdown/`, and report the tool name, input URI, output path, headings found, and any conversion limitation. It must stop and report when the MCP is unavailable.
+Require learners to create their own project folder and seed URL CSV before crawling. The prompt must ask for missing scope values and must not guess a URL or begin crawling.
 
 - [ ] **Step 2: Write the crawling and parsing prompts**
 

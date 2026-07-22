@@ -97,7 +97,7 @@ day-03/
 ├── prd/generative-ai-text-analysis-prd.md
 ├── sdd/generative-ai-text-analysis-sdd.md
 ├── prompts/
-│   ├── 00-codex-mcp-setup.md
+│   ├── 00-create-project-and-seed-url.md
 │   ├── 01-crawl-specified-site.md
 │   ├── 02-parse-with-markitdown.md
 │   ├── 03-process-and-analyze-text.md
