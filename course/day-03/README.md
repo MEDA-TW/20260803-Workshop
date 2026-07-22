@@ -1,83 +1,76 @@
 # Day 3 — 生成式人工智慧於文本資料分析的應用
 
-> 2026 / 08 / 05（三）· 09:00 – 12:00 / 13:30 – 16:30
+> 2026 / 08 / 05（三）· 09:00–12:00／13:30–16:30
 
-## 今日主題
+## 今日要完成什麼
 
-| 區段 | 主題 |
-|:-----|:-----|
-| 上午 | 網站資料蒐集、文件解析與文本資料整理 |
-| 下午 | Vibe Coding 實戰應用：建立 RAG 智慧問答系統 |
+建立「校務文本智慧分析與問答助手」的最小資料管線：從講師指定的雲科大公開網站蒐集資料，保留來源，使用 Codex 的 MarkItDown MCP 轉為 Markdown，再進行 AI 分析、可引用的問答與回饋改善。
+
+```text
+seed URL → 爬取原始資料 → MarkItDown 解析 → 文本整理
+         → AI 分析 → RAG 問答 → 問答回饋 → 改善清單
+```
+
+RAG 是驗證資料是否可用的一環；本日成果不只是一個 chatbot。
 
 ## 學習目標
 
-- 了解生成式 AI 在文本資料分析中的應用。
-- 認識非結構化資料（HTML、PDF、DOCX）如何轉換為 AI 可使用的資料。
-- 使用 Vibe Coding 協助建立網站資料蒐集與文件解析流程。
-- 學習文本清理、Metadata 建立與文本分析方法。
-- 建立以資料來源為基礎的 RAG（Retrieval-Augmented Generation）問答系統。
-- 理解 AI 幻覺、資料來源引用與知識庫維護的重要性。
+完成本日後，學員能：
 
-## 實作案例
+1. 在指定公開網站範圍內建立可重現的爬取清單與來源紀錄。
+2. 使用 Codex + MarkItDown MCP 將本機 HTML、PDF、DOCX 轉為可檢查的 Markdown。
+3. 為文本建立 metadata、段落切分與可回溯的 AI 分析結果。
+4. 建立會引用文件與段落、且無證據時不猜測的 RAG 問答。
+5. 從問答紀錄判讀資料或系統缺口，提出下一輪改善行動。
 
-建立「雲科大技職所智慧行政助手」。
+## 資料與安全邊界
 
-資料來源：
+- 只蒐集講師提供的 seed URL 白名單及其允許範圍內的公開附件。
+- 不登入網站、不蒐集個人資料、不處理私人文件，也不進行全校網站爬取。
+- `data/raw/` 的原始檔不可覆寫；衍生檔必須保留 `document_id`、`source_url`、`crawled_at`。
+- MarkItDown MCP 是文件解析器，不是爬蟲；請先下載原始資料，再用本機 `file:` URI 解析。
 
-- 技職所官網公開資料
-- 本所法規
-- 研究生手冊
-- 行政流程文件
-- 表單下載資料
+## 時程
 
-系統目標：
+| 時段 | 主題 | 主要產出 |
+| --- | --- | --- |
+| 09:00–09:30 | 文本資料、來源與 MCP 預檢 | MarkItDown 測試紀錄 |
+| 09:30–10:30 | 指定網站爬取 | 原始檔、crawl manifest |
+| 10:30–12:00 | Markdown 解析與品質檢查 | Markdown、品質狀態 |
+| 13:30–14:30 | 生成式 AI 文本分析 | processed chunks、分析表 |
+| 14:30–15:40 | 可引用的 RAG 問答 | 測試題、答案、來源證據 |
+| 15:40–16:30 | 回饋分析與展示 | 改善 backlog |
 
-協助研究生與教師查詢：
+## 課程路徑
 
-- 修業規定
-- 論文流程
-- 學位考試
-- 資格考試
-- 行政申請流程
-- 相關表單資訊
+| 階段 | 提示詞 | 練習 |
+| --- | --- | --- |
+| MCP 預檢 | [00-codex-mcp-setup](prompts/00-codex-mcp-setup.md) | 納入練習 02 前置 |
+| 爬取與 manifest | [01-crawl-specified-site](prompts/01-crawl-specified-site.md) | [01-crawl-and-manifest](exercises/01-crawl-and-manifest.md) |
+| 解析與檢查 | [02-parse-with-markitdown](prompts/02-parse-with-markitdown.md) | [02-markdown-quality-check](exercises/02-markdown-quality-check.md) |
+| 整理與分析 | [03-process-and-analyze-text](prompts/03-process-and-analyze-text.md) | [03-ai-text-analysis](exercises/03-ai-text-analysis.md) |
+| RAG 問答 | [04-build-cited-rag](prompts/04-build-cited-rag.md) | [04-cited-rag-qa](exercises/04-cited-rag-qa.md) |
+| 回饋改善 | [05-analyze-query-feedback](prompts/05-analyze-query-feedback.md) | [05-feedback-to-improvement](exercises/05-feedback-to-improvement.md) |
 
+## 教材與專案模板
 
-## 時程（暫訂）
+- [PRD](prd/generative-ai-text-analysis-prd.md)：課程案例、需求與驗收標準。
+- [SDD](sdd/generative-ai-text-analysis-sdd.md)：資料流程、檔案責任與資料契約。
+- [專案模板](project-template/README.md)：學員共同使用的資料夾與範例資料。
+- [資料字典](project-template/docs/data-dictionary.md)：欄位與狀態定義。
 
-| 時段 | 內容 |
-|:-----|:-----|
-| 09:00 – 09:30 | 生成式 AI 與文本資料應用介紹 |
-| 09:30 – 10:30 | 實作：網站資料蒐集與資料來源整理 |
-| 10:30 – 12:00 | 實作：PDF / DOCX / HTML 文件解析與文本清理 |
-| 13:30 – 14:30 | 實作：文本分析與 Metadata 建立 |
-| 14:30 – 15:40 | 實作：建立 RAG 知識庫與智慧問答系統 |
-| 15:40 – 16:30 | 問答測試、成果展示與系統改善討論 |
+## 最終繳交
 
+每組繳交一份 `project-template/` 的複本，並確認包含：
 
-## 教材檔案（待補）
+1. `data/seeds/` 的核准來源範圍、`data/raw/` 原始檔與 `data/manifests/crawl_manifest.json`。
+2. MarkItDown 產生的 `data/markdown/`，以及每份文件的品質檢查結論。
+3. 至少三筆 `data/processed/` chunks、AI 分析結果與來源段落。
+4. 四類測試問題的 RAG 回答；有根據者附引用，無根據者標示 `insufficient_evidence`。
+5. 以問答紀錄產出的改善 backlog。
 
-- `prompts/` — 網站蒐集、文本分析、RAG 建置提示詞範本
-- `prd/` — 智慧問答系統需求文件
-- `sdd/` — 資料處理流程與系統架構設計文件
-- `exercises/` — 隨堂練習
-
-
-## 今日產出
-
-每組完成一套以雲科大技職所公開資料為基礎的文本資料應用系統，包含：
-
-1. 網站資料蒐集流程。
-2. 文件解析與整理流程。
-3. 文本資料集與 Metadata。
-4. RAG 智慧問答系統。
-5. 問答紀錄與使用需求分析。
-
-
-## 繳交方式
-
-> 待補：實際繳交方式由 day-03 講師公告。
-
+評量重點為資料可追溯性與改善判斷，不以聊天介面美觀或模型文字流暢度評分。
 
 ---
 
-**負責講師**：張育慈
+**負責講師**：張育慈 Ruby

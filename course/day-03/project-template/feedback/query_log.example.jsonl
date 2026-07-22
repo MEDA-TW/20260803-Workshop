@@ -1,0 +1,10 @@
+{"query_id":"q-001","asked_at":"2026-08-05T15:42:00+08:00","question":"資格考何時申請？","answer_status":"answered","cited_chunk_ids":["grad-rules-001#exam-01"],"user_feedback":"helpful","notes":"高頻時程問題"}
+{"query_id":"q-002","asked_at":"2026-08-05T15:43:00+08:00","question":"申請表在哪裡？","answer_status":"insufficient_evidence","cited_chunk_ids":[],"user_feedback":"not_helpful","notes":"附件未收錄"}
+{"query_id":"q-003","asked_at":"2026-08-05T15:44:00+08:00","question":"能否延後畢業？","answer_status":"insufficient_evidence","cited_chunk_ids":[],"user_feedback":"neutral","notes":"問題過於模糊"}
+{"query_id":"q-004","asked_at":"2026-08-05T15:45:00+08:00","question":"畢業申請期限？","answer_status":"answered","cited_chunk_ids":["grad-rules-001#graduation-01"],"user_feedback":"helpful","notes":"時程類"}
+{"query_id":"q-005","asked_at":"2026-08-05T15:46:00+08:00","question":"資格考科目？","answer_status":"needs_review","cited_chunk_ids":["grad-rules-001#exam-02"],"user_feedback":"not_helpful","notes":"掃描表格未解析"}
+{"query_id":"q-006","asked_at":"2026-08-05T15:47:00+08:00","question":"獎學金資格？","answer_status":"insufficient_evidence","cited_chunk_ids":[],"user_feedback":"not_helpful","notes":"範圍外資料"}
+{"query_id":"q-007","asked_at":"2026-08-05T15:48:00+08:00","question":"論文格式在哪？","answer_status":"answered","cited_chunk_ids":["grad-rules-001#thesis-01"],"user_feedback":"helpful","notes":"格式規範"}
+{"query_id":"q-008","asked_at":"2026-08-05T15:49:00+08:00","question":"今年規定是否更新？","answer_status":"insufficient_evidence","cited_chunk_ids":[],"user_feedback":"neutral","notes":"缺少版本日期"}
+{"query_id":"q-009","asked_at":"2026-08-05T15:50:00+08:00","question":"誰可以申請？","answer_status":"insufficient_evidence","cited_chunk_ids":[],"user_feedback":"not_helpful","notes":"指涉不明"}
+{"query_id":"q-010","asked_at":"2026-08-05T15:51:00+08:00","question":"申請要附什麼？","answer_status":"answered","cited_chunk_ids":["grad-rules-001#application-01"],"user_feedback":"helpful","notes":"附件清單"}

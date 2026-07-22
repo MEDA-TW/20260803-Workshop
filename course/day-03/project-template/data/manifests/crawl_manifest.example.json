@@ -1,0 +1,28 @@
+[
+  {
+    "document_id": "grad-rules-001",
+    "seed_id": "grad-rules-example",
+    "title": "研究生修業規定",
+    "source_url": "https://graduate.example.edu.tw/rules/study.pdf",
+    "source_type": "pdf",
+    "crawled_at": "2026-08-05T09:42:00+08:00",
+    "published_at": "2026-07-01",
+    "raw_path": "data/raw/grad-rules-001.pdf",
+    "http_status": 200,
+    "crawl_status": "success",
+    "error_message": null
+  },
+  {
+    "document_id": "grad-notice-002",
+    "seed_id": "grad-notices-example",
+    "title": "資格考申請公告",
+    "source_url": "https://graduate.example.edu.tw/notices/qualifying-exam",
+    "source_type": "html",
+    "crawled_at": "2026-08-05T09:45:00+08:00",
+    "published_at": null,
+    "raw_path": null,
+    "http_status": 404,
+    "crawl_status": "failed",
+    "error_message": "HTTP 404：請勿自動改用相似網址。"
+  }
+]
