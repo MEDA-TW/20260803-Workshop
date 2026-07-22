@@ -25,7 +25,7 @@ seed allowlist → crawler → raw + manifest → MarkItDown MCP → markdown
 
 ## RAG 與回饋契約
 
-RAG 回應格式：`answer`、`answer_status`、`retrieved_chunk_ids`、`citations`（文件名、URL、頁碼或 anchor）、`limitations`。沒有足夠 chunk 證據時，`answer_status` 必為 `insufficient_evidence`，不得補造答案。
+RAG 回應格式：`answer`、`answer_status`、`retrieved_chunk_ids`、`citations`（文件名、URL、頁碼或 anchor）、`crawled_at`、`limitations`。回覆承辦人或聯絡方式時，必須引用含該資訊的來源並標明 `crawled_at`；沒有足夠 chunk 證據時，`answer_status` 必為 `insufficient_evidence`，不得補造答案。
 
 回饋事件包含 `query_id`、`asked_at`、`question`、`answer_status`、`cited_chunk_ids`、`user_feedback`、`notes`。改善動作只能為 PRD 定義的五種之一。
 

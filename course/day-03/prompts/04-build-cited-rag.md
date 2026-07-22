@@ -6,7 +6,7 @@
 
 ## 提示詞
 
-> 僅根據檢索到的 chunks 回答。輸出 answer、answer_status、retrieved_chunk_ids、文件名稱、source_url、page_or_anchor 與 limitations。若沒有足夠證據，answer_status 必為 `insufficient_evidence`，說明應補哪類文件。
+> 僅根據檢索到的 chunks 回答。輸出 answer、answer_status、retrieved_chunk_ids、文件名稱、source_url、page_or_anchor、crawled_at 與 limitations。若問題涉及承辦人、email、電話或分機，必須引用含該資訊的原始頁面或文件，並說明此資訊依該來源於 `crawled_at` 時取得；不可從其他文件推測目前窗口。若沒有足夠證據，answer_status 必為 `insufficient_evidence`，說明應補哪類文件。
 
 ## 驗收
 
