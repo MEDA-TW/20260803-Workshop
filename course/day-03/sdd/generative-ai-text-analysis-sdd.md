@@ -8,7 +8,7 @@ seed allowlist → crawler → raw + manifest → MarkItDown MCP → markdown
 → query log → improvement backlog
 ```
 
-爬蟲只負責在白名單中下載並記錄原始資料；MarkItDown MCP 只負責將 manifest 中成功取得的本機 `file:` URI 轉為 Markdown。兩者不可混用。
+爬蟲只負責在白名單中下載並記錄原始資料；格式以 HTTP `Content-Type`、`Content-Disposition` 檔名與 HTML 連結標題／文字交叉判定，不可只依 URL 副檔名。MarkItDown MCP 只負責將 manifest 中成功取得的本機 `file:` URI 轉為 Markdown。兩者不可混用。
 
 ## 資料層責任
 
@@ -21,7 +21,7 @@ seed allowlist → crawler → raw + manifest → MarkItDown MCP → markdown
 | `data/processed/` | 可檢索 chunks；保留完整 provenance。 |
 | `analysis/`、`rag/`、`feedback/` | 分析證據、問答證據與改善決策。 |
 
-每筆 manifest 至少有 `document_id`、`seed_id`、`source_url`、`source_type`、`crawled_at`、`raw_path`、`crawl_status`；每筆 chunk 至少有 `chunk_id`、`document_id`、`source_url`、`crawled_at`、`markdown_path`、`section_heading`、`page_or_anchor`、`chunk_text`、`quality_status`。處理狀態依序為 `collected`、`parsed`、`needs_review`、`ready_for_analysis`、`excluded`；只有 `ready_for_analysis` 可進入檢索。
+每筆 seed 至少有 `seed_id`、`start_url`、`allowed_hosts`、`allowed_path_prefix`、`allowed_formats`、`max_pages`、`max_attachments`；`allowed_hosts` 以分號分隔完整主機名稱，不可自動擴大為其他子網域。每筆 manifest 至少有 `document_id`、`seed_id`、`source_url`、`source_type`、`crawled_at`、`raw_path`、`crawl_status`；每筆 chunk 至少有 `chunk_id`、`document_id`、`source_url`、`crawled_at`、`markdown_path`、`section_heading`、`page_or_anchor`、`chunk_text`、`quality_status`。處理狀態依序為 `collected`、`parsed`、`needs_review`、`ready_for_analysis`、`excluded`；只有 `ready_for_analysis` 可進入檢索。
 
 ## RAG 與回饋契約
 
