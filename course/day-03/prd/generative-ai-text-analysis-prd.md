@@ -21,7 +21,7 @@
 
 ## 非目標與驗收
 
-不做全校爬取、登入後資料、確認範圍外內容、正式上線服務或必要向量資料庫。無需登入即可存取的公開網頁、公開附件及其公開聯絡資訊可依 `crawl_scope.json` 蒐集。原始檔不可覆寫；所有衍生結果保留 `document_id`、`source_url`、`crawled_at`。最終成果須完成 README 所列五項繳交物。
+不做全校爬取、登入後資料、確認範圍外內容、正式上線服務或必要向量資料庫。無需登入即可存取的公開網頁、公開附件及其公開聯絡資訊可依 `crawl_scope.json` 蒐集。原始檔不可覆寫；下載附件須以網站提供的原始檔名存於 `data/raw/<document_id>/`，並在 manifest 記錄 `original_filename`；所有衍生結果保留 `document_id`、`source_url`、`crawled_at`。最終成果須完成 README 所列五項繳交物。
 
 | 評量面向 | 比重 |
 | --- | ---: |

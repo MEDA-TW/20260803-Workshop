@@ -27,7 +27,7 @@ RAG 是驗證資料是否可用的一環；本日成果不只是一個 chatbot�
 
 - 只蒐集講師指定起始網址所確認之範圍內的公開網頁與附件。
 - 只處理無需登入即可存取的公開網頁與公開附件；可保留其中已公開的聯絡資訊，但不得嘗試取得受限、私密或白名單外內容。
-- `data/raw/` 的原始檔不可覆寫；衍生檔必須保留 `document_id`、`source_url`、`crawled_at`。
+- `data/raw/` 的原始檔不可覆寫。下載附件放在 `data/raw/<document_id>/<原始檔名>`，保留網站提供的原始檔名；衍生檔必須保留 `document_id`、`source_url`、`crawled_at`。
 - MarkItDown MCP 是文件解析器，不是爬蟲；請先下載原始資料，再用本機 `file:` URI 解析。
 
 ## 時程
@@ -63,7 +63,7 @@ clone 課程 repo 後，每組在 `course/day-03/` 下自行建立工作資料�
 
 ```text
 team-01-project/
-├── data/raw/         不可覆寫的 HTML、PDF、DOCX
+├── data/raw/         不可覆寫的 HTML、PDF、DOCX；附件依 document_id 分資料夾並保留原始檔名
 ├── data/manifests/   crawl scope、來源、時間、路徑與狀態
 ├── data/markdown/    MarkItDown 輸出
 ├── data/processed/   metadata 與 chunks
