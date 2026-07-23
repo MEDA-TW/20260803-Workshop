@@ -10,7 +10,7 @@
 
 ## Global Constraints
 
-- 模型固定為 `qwen2.5:3b`，僅透過本機 Ollama 呼叫；不使用雲端 API。
+- 模型固定為 `qwen3:8b`，僅透過本機 Ollama 呼叫；不使用雲端 API。
 - 只讀取 `quality_status == "ready_for_analysis"` 的 JSONL chunks。
 - `data/raw/` 不可修改；所有回答引用保留 `document_id`、`source_url`、`page_or_anchor` 與 `crawled_at`。
 - 無足夠證據時不呼叫模型，回傳 `insufficient_evidence`。
@@ -211,7 +211,7 @@ from typing import Callable
 
 from retrieval import build_citations
 
-MODEL_NAME = "qwen2.5:3b"
+MODEL_NAME = "qwen3:8b"
 
 
 def _prompt(question: str, chunks: list[dict]) -> str:
@@ -422,7 +422,7 @@ ollama
 Update `rag/README.md` with these exact commands:
 
 ```bash
-ollama pull qwen2.5:3b
+ollama pull qwen3:8b
 ollama serve
 python3 -m pip install -r rag/requirements.txt
 streamlit run rag/app.py
@@ -460,7 +460,7 @@ git commit -m "feat: add Streamlit RAG chat interface"
 
 ```bash
 rg -q 'Ollama' README.md
-rg -q 'qwen2.5:3b' README.md
+rg -q 'qwen3:8b' README.md
 rg -q 'streamlit run rag/app.py' prompts/04-build-cited-rag.md
 rg -q 'feedback/query_log.jsonl' prompts/05-analyze-query-feedback.md
 ```
@@ -476,7 +476,7 @@ Expected: non-zero exit because the course does not yet document the local chatb
 Add the following learner-facing requirements:
 
 ```text
-所有學員課前安裝 Ollama，並執行 `ollama pull qwen2.5:3b`。第 04 步完成後，以 `streamlit run rag/app.py` 開啟本機網頁；測試支持性回答、聯絡資訊不足、語料範圍外與規定是否過期四種問題。每次提問必須追加至 `feedback/query_log.jsonl`，供第 05 步使用。
+所有學員課前安裝 Ollama，並執行 `ollama pull qwen3:8b`。第 04 步完成後，以 `streamlit run rag/app.py` 開啟本機網頁；測試支持性回答、聯絡資訊不足、語料範圍外與規定是否過期四種問題。每次提問必須追加至 `feedback/query_log.jsonl`，供第 05 步使用。
 ```
 
 - [ ] **Step 4: Run all tests and content checks**
@@ -485,7 +485,7 @@ Run:
 
 ```bash
 cd team-02-project/rag && python3 -m unittest discover -s tests -v
-cd /path/to/course/day-03 && rg -q 'Ollama' README.md && rg -q 'qwen2.5:3b' README.md && rg -q 'streamlit run rag/app.py' prompts/04-build-cited-rag.md && rg -q 'feedback/query_log.jsonl' prompts/05-analyze-query-feedback.md
+cd /path/to/course/day-03 && rg -q 'Ollama' README.md && rg -q 'qwen3:8b' README.md && rg -q 'streamlit run rag/app.py' prompts/04-build-cited-rag.md && rg -q 'feedback/query_log.jsonl' prompts/05-analyze-query-feedback.md
 ```
 
 Expected: all unit tests PASS and every content check exits 0. If Ollama is unavailable, additionally verify the explicit UI error message with `ollama` absent; defer the actual model-generation smoke test until Ollama is installed.

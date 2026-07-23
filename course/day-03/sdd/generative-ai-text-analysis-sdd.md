@@ -25,7 +25,7 @@ start URL → crawl scope → crawler → raw + manifest → MarkItDown MCP → 
 
 ## RAG 與回饋契約
 
-RAG 介面為 `rag/app.py` 的 Streamlit 本機網頁，模型固定使用本機 Ollama `qwen2.5:3b`。RAG 回應格式：`answer`、`answer_status`、`retrieved_chunk_ids`、`citations`（文件名、URL、頁碼或 anchor）、`crawled_at`、`limitations`。回覆承辦人或聯絡方式時，必須引用含該資訊的來源並標明 `crawled_at`；沒有足夠 chunk 證據時，`answer_status` 必為 `insufficient_evidence`，不得呼叫模型或補造答案。
+RAG 介面為 `rag/app.py` 的 Streamlit 本機網頁，模型固定使用本機 Ollama `qwen3:8b`。RAG 回應格式：`answer`、`answer_status`、`retrieved_chunk_ids`、`citations`（文件名、URL、頁碼或 anchor）、`crawled_at`、`limitations`。回覆承辦人或聯絡方式時，必須引用含該資訊的來源並標明 `crawled_at`；沒有足夠 chunk 證據時，`answer_status` 必為 `insufficient_evidence`，不得呼叫模型或補造答案。
 
 回饋事件追加至 `feedback/query_log.jsonl`，每筆包含 `query_id`、`asked_at`、`question`、`answer_status`、`cited_chunk_ids`、`user_feedback`、`notes`。改善動作只能為 PRD 定義的五種之一。
 

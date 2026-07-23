@@ -16,7 +16,7 @@ RAG 是驗證資料是否可用的一環；本日成果不只是一個 chatbot�
 ## 課前必要工具
 
 - Codex 與 MarkItDown MCP：用於將已下載的公開文件轉成 Markdown。
-- Ollama：所有學員在課前安裝，並執行 `ollama pull qwen2.5:3b` 下載指定本機模型。Day-03 的對話機器人不使用雲端 API。
+- Ollama：所有學員在課前安裝，並執行 `ollama pull qwen3:8b` 下載指定本機模型。Day-03 的對話機器人不使用雲端 API。
 
 ## 學習目標
 
