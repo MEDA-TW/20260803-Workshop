@@ -13,6 +13,11 @@
 
 RAG 是驗證資料是否可用的一環；本日成果不只是一個 chatbot。
 
+## 課前必要工具
+
+- Codex 與 MarkItDown MCP：用於將已下載的公開文件轉成 Markdown。
+- Ollama：所有學員在課前安裝，並執行 `ollama pull qwen2.5:3b` 下載指定本機模型。Day-03 的對話機器人不使用雲端 API。
+
 ## 學習目標
 
 完成本日後，學員能：
@@ -82,7 +87,7 @@ team-01-project/
 1. `data/manifests/crawl_scope.json` 的確認範圍、`data/raw/` 原始檔與 `data/manifests/crawl_manifest.json`。
 2. MarkItDown 產生的 `data/markdown/`，以及每份文件的品質檢查結論。
 3. 至少三筆 `data/processed/` chunks、AI 分析結果與來源段落。
-4. 四類測試問題的 RAG 回答；有根據者附引用，無根據者標示 `insufficient_evidence`。
+4. 可由 `streamlit run rag/app.py` 開啟的本機對話機器人；四類測試問題的 RAG 回答有根據者附引用，無根據者標示 `insufficient_evidence`，並寫入 `feedback/query_log.jsonl`。
 5. 以問答紀錄產出的改善 backlog。
 
 評量重點為資料可追溯性與改善判斷，不以聊天介面美觀或模型文字流暢度評分。
