@@ -9,7 +9,7 @@
 ## 前置條件
 
 - 所有學員課前安裝 Ollama。
-- 課堂指定模型為 `qwen3:8b`，並在課前下載至本機。
+- 課堂指定模型為 `qwen2.5:3b`，並在課前下載至本機。
 - 專案使用 Python 與 Streamlit；模型只透過本機 Ollama 服務呼叫。
 
 ## 介面與資料流程
@@ -24,7 +24,7 @@
 關鍵字檢索前 3 個 chunks
           ↓
 證據不足 → insufficient_evidence
-有證據 → Ollama qwen3:8b
+有證據 → Ollama qwen2.5:3b
           ↓
 回答、引用、crawled_at、限制
           ↓

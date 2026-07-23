@@ -16,7 +16,7 @@
 2. 以 Codex 的 MarkItDown MCP 將成功下載的本機檔案轉為 Markdown。
 3. 檢查轉換品質，並對每份文件設定 `ready_for_analysis`、`needs_review` 或 `excluded`。
 4. 以 metadata 與 chunks 產生摘要、分類、行政資訊擷取與主題分析。
-5. 以 Streamlit 建立可在瀏覽器開啟的本機問答機器人，透過 Ollama `qwen3:8b` 以檢索到的 chunks 回答問題，輸出回答、chunk ID、來源 URL 與段落／頁面；無證據時輸出 `insufficient_evidence` 且不呼叫模型。
+5. 以 Streamlit 建立可在瀏覽器開啟的本機問答機器人，透過 Ollama `qwen2.5:3b` 以檢索到的 chunks 回答問題，輸出回答、chunk ID、來源 URL 與段落／頁面；無證據時輸出 `insufficient_evidence` 且不呼叫模型。
 6. 將每次問答追加至 `feedback/query_log.jsonl`，再分析問答紀錄，將問題導向 `add_source`、`repair_parse`、`revise_chunking_or_metadata`、`improve_retrieval` 或 `revise_prompt` 的改善 backlog。
 
 ## 非目標與驗收
