@@ -17,11 +17,13 @@ start URL → crawl scope → crawler → raw + manifest → MarkItDown MCP → 
 | `data/manifests/crawl_scope.json` | 起始網址、網域、路徑、格式與數量上限。 |
 | `data/raw/` | 不可變更的原始檔。下載附件存於 `data/raw/<document_id>/<original_filename>`，保留網站提供的原始檔名；HTML 頁面存於其 `document_id` 資料夾。 |
 | `data/manifests/` | 來源、時間、路徑、HTTP 結果與爬取狀態。 |
-| `data/markdown/` | MarkItDown 輸出與品質檢查紀錄。 |
-| `data/processed/` | 可檢索 chunks；保留完整 provenance。 |
+| `data/markdown/` | `data/markdown/<document_id>.md` 的 MarkItDown 輸出，以及 `quality_report.jsonl` 品質檢查紀錄。 |
+| `data/processed/` | `data/processed/<document_id>.chunks.jsonl` 可檢索 chunks；保留完整 provenance。 |
 | `analysis/`、`rag/`、`feedback/` | 分析證據、問答證據與改善決策。 |
 
-`crawl_scope.json` 至少有 `scope_id`、`start_url`、`allowed_hosts`、`allowed_path_prefix`、`allowed_formats`、`max_pages`、`max_attachments`、`created_at`；`allowed_hosts` 為完整主機名稱陣列，不可自動擴大為其他子網域。每筆附件 manifest 至少有 `document_id`、`scope_id`、`source_url`、`source_type`、`original_filename`、`crawled_at`、`raw_path`、`crawl_status`；其中 `raw_path` 為 `data/raw/<document_id>/<original_filename>`。每筆 chunk 至少有 `chunk_id`、`document_id`、`source_url`、`crawled_at`、`markdown_path`、`section_heading`、`page_or_anchor`、`chunk_text`、`quality_status`。處理狀態依序為 `collected`、`parsed`、`needs_review`、`ready_for_analysis`、`excluded`；只有 `ready_for_analysis` 可進入檢索。
+`crawl_scope.json` 至少有 `scope_id`、`start_url`、`allowed_hosts`、`allowed_path_prefix`、`allowed_formats`、`max_pages`、`max_attachments`、`created_at`；`allowed_hosts` 為完整主機名稱陣列，不可自動擴大為其他子網域。每筆附件 manifest 至少有 `document_id`、`scope_id`、`source_url`、`source_type`、`original_filename`、`crawled_at`、`raw_path`、`crawl_status`；其中 `raw_path` 為 `data/raw/<document_id>/<original_filename>`。
+
+每份 Markdown 固定存為 `data/markdown/<document_id>.md`，檔頭保留 `document_id`、`source_url`、`crawled_at`、`raw_path`。`data/markdown/quality_report.jsonl` 每行至少有 `document_id`、`markdown_path`、`quality_status`、`checked_features`、`reason`、`checked_at`；`checked_features` 固定檢查標題階層、段落或清單、表格或掃描內容。每筆 chunk 固定存於 `data/processed/<document_id>.chunks.jsonl`，至少有 `chunk_id`、`document_id`、`source_url`、`crawled_at`、`markdown_path`、`section_heading`、`page_or_anchor`、`chunk_text`、`quality_status`。處理狀態依序為 `collected`、`parsed`、`needs_review`、`ready_for_analysis`、`excluded`；只有 `ready_for_analysis` 可進入檢索。
 
 ## RAG 與回饋契約
 
