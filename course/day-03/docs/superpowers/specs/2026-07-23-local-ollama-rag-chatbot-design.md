@@ -51,7 +51,7 @@ feedback/query_log.jsonl
 - `citations`：文件名稱、`source_url`、`page_or_anchor`、`crawled_at`
 - `limitations`
 
-檢索不到與問題有足夠關聯的 chunks 時，程式不呼叫模型，直接輸出 `insufficient_evidence`，並說明應補哪類文件。承辦人、email、電話或分機問題只有在檢索到含該資訊的 chunk 時才能回答。
+檢索不到與問題有足夠關聯的 chunks 時，程式不呼叫模型，直接輸出 `insufficient_evidence`，並說明應補哪類文件。承辦人、email、電話或分機問題只有在檢索到含該資訊的 chunk 時才能回答。期限、數字、單位與聯絡資訊必須可逐字回查 evidence；無法核對時，顯示相關原文證據或改為 `insufficient_evidence`。
 
 ## 問答紀錄
 
@@ -79,6 +79,7 @@ feedback/query_log.jsonl
 ## 驗收與測試
 
 1. 在沒有 Ollama 時，介面顯示可行的修復訊息。
-2. 用已有證據的「最晚何時送所辦」問題，顯示回答、chunk、URL、段落與 `crawled_at`。
-3. 用「承辦人是誰」及「資格考何時申請」問題，顯示 `insufficient_evidence`，不編造資訊。
-4. 每次提問都在 `feedback/query_log.jsonl` 產生一筆可供第 05 步分析的紀錄。
+2. 完成四類基本測試：有依據的規章或流程、公開聯絡資訊、模糊問題、語料範圍外問題。
+3. 前兩類只有在 evidence 含直接資訊時才回答，並顯示 chunk、URL、段落與 `crawled_at`；其餘情況要求釐清或輸出 `insufficient_evidence`，不編造資訊。
+4. 若資料中確有衝突或過期文件，可作進階挑戰：列出相關來源與 `crawled_at`，不自行判定現行規定。
+5. 每次提問都在 `feedback/query_log.jsonl` 產生一筆可供第 05 步分析的紀錄。
