@@ -18,6 +18,12 @@ RAG 是驗證資料是否可用的一環；本日成果不只是一個 chatbot�
 - Codex 與 MarkItDown MCP：用於將已下載的公開文件轉成 Markdown。
 - Ollama：所有學員在課前安裝，並執行 `ollama pull qwen2.5:3b` 下載指定本機模型。Day-03 的對話機器人不使用雲端 API。
 
+## 課前檢查
+
+- 講師於課前確認每台電腦可在 Codex 中使用 MarkItDown MCP；學生不必在尚未爬到資料前預先解析空檔案。
+- 講師確認 `ollama list` 可看見 `qwen2.5:3b`，且 Python 可執行並可安裝 `streamlit` 與 Ollama Python 用戶端。
+- 學生完成第一筆成功下載後，才以該本機檔案的 `file:` URI 驗證 MarkItDown MCP；這是第 02 步的開始條件。
+
 ## 學習目標
 
 完成本日後，學員能：
@@ -34,6 +40,10 @@ RAG 是驗證資料是否可用的一環；本日成果不只是一個 chatbot�
 - 只處理無需登入即可存取的公開網頁與公開附件；可保留其中已公開的聯絡資訊，但不得嘗試取得受限、私密或白名單外內容。
 - `data/raw/` 的原始檔不可覆寫。下載附件放在 `data/raw/<document_id>/<原始檔名>`，保留網站提供的原始檔名；衍生檔必須保留 `document_id`、`source_url`、`crawled_at`。
 - MarkItDown MCP 是文件解析器，不是爬蟲；請先下載原始資料，再用本機 `file:` URI 解析。
+
+## 講師備援規則
+
+正常情況每組都從指定網站完成爬取。只有網站、下載或解析異常，導致一組無法取得至少三筆 `ready_for_analysis` chunks 時，講師才提供一小組同樣屬於公開來源的 HTML、PDF、DOCX 備援資料與來源資訊。學生仍須為備援資料建立 scope、manifest、Markdown、品質報告與 provenance；不可跳過爬取直接索取備援。
 
 ## 時程
 
@@ -85,9 +95,9 @@ team-01-project/
 每組繳交自己的 `team-xx-project/`，並確認包含：
 
 1. `data/manifests/crawl_scope.json` 的確認範圍、`data/raw/` 原始檔與 `data/manifests/crawl_manifest.json`。
-2. MarkItDown 產生的 `data/markdown/`，以及每份文件的品質檢查結論。
-3. 至少三筆 `data/processed/` chunks、AI 分析結果與來源段落。
-4. 可由 `streamlit run rag/app.py` 開啟的本機對話機器人；四類測試問題的 RAG 回答有根據者附引用，無根據者標示 `insufficient_evidence`，並寫入 `feedback/query_log.jsonl`。
+2. MarkItDown 產生的 `data/markdown/` 與 `data/markdown/quality_report.jsonl`，以及每份文件的品質檢查結論。
+3. 至少三筆 `data/processed/<document_id>.chunks.jsonl`、`analysis/text_analysis.md` 與來源段落。
+4. 可由 `streamlit run rag/app.py` 開啟的本機對話機器人；完成四類基本測試：有依據問答、公開聯絡資訊、模糊問題、語料範圍外問題。有根據者附引用，無根據者標示 `insufficient_evidence`，並寫入 `feedback/query_log.jsonl`。文件衝突或過期是進階挑戰，不列入基本繳交。
 5. 以問答紀錄產出的改善 backlog。
 
 評量重點為資料可追溯性與改善判斷，不以聊天介面美觀或模型文字流暢度評分。
