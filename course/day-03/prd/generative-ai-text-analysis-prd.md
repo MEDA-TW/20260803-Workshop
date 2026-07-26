@@ -2,31 +2,35 @@
 
 ## 目標
 
-以指定雲科大公開網站為資料範圍，建立可追溯的文本資料流程，讓教師、行政人員與學生能分析規章／公告並查詢有來源依據的資訊。
+以 `https://tve.yuntech.edu.tw/` 的公開內容為資料範圍，讓每位學員在自己的電腦建立可追溯的文本資料流程，分析規章／公告並建立附來源的本機問答原型。
 
 ## 使用者與情境
 
-- 教師：整理教學或研究生規範，辨識學生常見需求。
-- 行政人員：降低重複說明，找出應補強的文件或 FAQ。
-- 學生：查詢修業、資格考與行政流程；系統必須說明依據或限制。
+- 課程學員：以 Codex 自然語言協作完成資料管線與本機原型，不要求手寫程式。
+- 教師、行政人員與學生：作為未來可能使用此類資訊工具的情境角色；本課原型不對外部署，不能視為正式服務。
 
 ## 功能需求
 
-1. 從講師提供的公開起始網址確認爬取範圍，建立 `crawl_scope.json` 後爬取公開 HTML 與附件，記錄 manifest。
-2. 以 Codex 的 MarkItDown MCP 將成功下載的本機檔案轉為 Markdown。
-3. 將每份 Markdown 存為 `data/markdown/<document_id>.md`，並以 `data/markdown/quality_report.jsonl` 檢查與記錄 `ready_for_analysis`、`needs_review` 或 `excluded`。
-4. 以 `data/processed/<document_id>.chunks.jsonl` 的 metadata 與 chunks 產生 `analysis/text_analysis.md` 摘要、分類、行政資訊擷取與主題分析。
-5. 以 Streamlit 建立可在瀏覽器開啟的本機問答機器人，透過 Ollama `qwen2.5:3b` 以檢索到的 chunks 回答問題，輸出回答、chunk ID、來源 URL 與段落／頁面；無證據時輸出 `insufficient_evidence` 且不呼叫模型。基本驗收為有依據問答、公開聯絡資訊、模糊問題與語料範圍外問題四類；衝突或過期文件僅為進階挑戰。
-6. 將每次問答追加至 `feedback/query_log.jsonl`，再分析問答紀錄，將問題導向 `add_source`、`repair_parse`、`revise_chunking_or_metadata`、`improve_retrieval` 或 `revise_prompt` 的改善 backlog。
+1. 在課堂完成 MarkItDown MCP、Ollama `qwen2.5:3b`、`nomic-embed-text-v2-moe`、Streamlit 與 Ollama Python 用戶端的安裝及健康檢查。
+2. 以統一起始網址建立 `crawl_scope.json`：完整主機固定為 `tve.yuntech.edu.tw`、路徑為 `/`、格式僅 HTML／PDF／DOCX、上限為 20 個 HTML 與 20 份附件；先遵守 `robots.txt` 與網站規範，再以單一連線、至少 1 秒間隔擷取。
+3. 爬取公開 HTML 與附件並記錄 manifest；不得追蹤其他子網域或外部主機、登入內容或受限內容。原始檔不可覆寫，附件保留原始檔名。
+4. 以 Codex 的 MarkItDown MCP 將成功下載的本機檔案轉為 Markdown，產出品質報告；只有 `ready_for_analysis` 文件可被處理。
+5. 將可用 Markdown 切成具完整 provenance 的 chunks，產出 `analysis/text_analysis.md`，明確分開文件證據與 AI 解讀。
+6. 以 Streamlit 建立本機向量檢索問答：使用 `nomic-embed-text-v2-moe` 建立學生自己的本機索引、檢索最多三筆 chunks，再以 Ollama `qwen2.5:3b` 回答。畫面必須顯示前三個 chunk、相似度、文件名稱、URL、段落位置與 `crawled_at`。只有足夠證據才可呼叫回答模型；否則輸出 `insufficient_evidence` 且不生成答案。
+7. 將每次自我測試追加至 `feedback/query_log.jsonl`，並以紀錄產出改善 backlog；改善動作僅能為 `add_source`、`repair_parse`、`revise_chunking_or_metadata`、`improve_retrieval` 或 `revise_prompt`。
 
-## 非目標與驗收
+## 非目標與完成條件
 
-不做全校爬取、登入後資料、確認範圍外內容、正式上線服務或必要向量資料庫。無需登入即可存取的公開網頁、公開附件及其公開聯絡資訊可依 `crawl_scope.json` 蒐集。原始檔不可覆寫；下載附件須以網站提供的原始檔名存於 `data/raw/<document_id>/`，並在 manifest 記錄 `original_filename`；所有衍生結果保留 `document_id`、`source_url`、`crawled_at`。正常情況由學生自行爬取；只有網站、下載或解析異常導致無法完成流程時，講師才可提供公開備援資料，且仍須完成相同的來源與處理紀錄。最終成果須完成 README 所列五項繳交物。
+不做登入後資料、跨主機內容、正式上線服務、公開部署或真人使用者研究。公開頁面中的聯絡資訊只有在來源 chunk 明確包含時才可回答，並須標示 `crawled_at`。
 
-| 評量面向 | 比重 |
-| --- | ---: |
-| 資料蒐集與來源紀錄 | 20% |
-| MarkItDown 解析與品質檢查 | 20% |
-| 文本整理與 AI 分析 | 20% |
-| RAG 回答與引用 | 25% |
-| 回饋分析與改善方案 | 15% |
+若網站、下載、解析或站方規範使學生無法取得至少三筆 `ready_for_analysis` chunks，講師可提供同樣具公開來源與 provenance 的備援資料；學生仍須執行相同資料流程。
+
+學生在本機完成以下檢核，不收件、不評分：
+
+1. scope、raw 與 manifest 可回查每筆來源。
+2. Markdown、品質報告與至少三筆可用 chunks 均符合資料契約。
+3. 分析表的文件證據與 AI 解讀分欄。
+4. 學生自行設計四類測試：有依據問題、公開聯絡資訊、模糊問題、語料範圍外問題。支持性回答必附引用；其他情況正確結果可為 `insufficient_evidence`。
+5. 每題的自我測試評註與改善 backlog 均可回連 query_id。
+
+所有回答畫面皆提示：「依本次爬取資料回答，請以原始網站最新公告為準。」

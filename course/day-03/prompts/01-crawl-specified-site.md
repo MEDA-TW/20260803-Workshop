@@ -8,29 +8,26 @@
 
 > ### 任務
 >
-> 依 `data/manifests/crawl_scope.json` 的 `allowed_hosts`、路徑、頁數、附件數與格式限制，爬取公開內容。
+> 依 `data/manifests/crawl_scope.json` 擷取公開內容。開始前讀取並遵守 `robots.txt` 與網站使用規範；若禁止自動擷取，停止、寫入原因並向講師報告。
 >
-> ### 範圍限制
+> ### 範圍與速率
 >
-> - `allowed_hosts` 是完整主機名稱清單；只能跟隨其中列出的主機。
-> - 不可自動放寬為同一根網域或其他子網域。
-> - 不可跟隨範圍外網址、不可登入、不可覆寫原始檔。
+> - 只能使用 `tve.yuntech.edu.tw`，路徑 `/`；不可跟隨其他主機、子網域、登入頁或受限內容。
+> - 只處理 HTML、PDF、DOCX；最多 20 個 HTML 頁面與 20 份附件，達上限即停止。
+> - 單一連線；每次請求至少間隔 1 秒；不無限重試。
 >
 > ### 格式判定
 >
-> 不可只看 URL 副檔名。請交叉判定：
->
-> - HTTP `Content-Type`
-> - `Content-Disposition` 的檔名
-> - HTML 連結的 `title` 或可見文字
->
-> 只處理 HTML、PDF、DOCX；若仍無法確認格式，記錄為 `excluded`，不要下載。
+> 不可只看 URL 副檔名。交叉判定 HTTP `Content-Type`、`Content-Disposition` 檔名、HTML 連結標題或可見文字；無法確認格式則記錄 `excluded`，不要下載。
 >
 > ### 檔案與 manifest
 >
-> - 附件從 `Content-Disposition` 取得原始檔名，存於 `data/raw/<document_id>/<原始檔名>`；不可自行改名。
-> - 在 `data/manifests/crawl_manifest.json` 記錄 `original_filename` 與 `raw_path`。
-> - 每筆另記錄：`document_id`、`scope_id`、`source_url`、`source_type`、`crawled_at`、HTTP 結果與狀態。
+> - 原始資料不可覆寫。附件從 `Content-Disposition` 取得原始檔名，存於 `data/raw/<document_id>/<原始檔名>`。
+> - 在 `data/manifests/crawl_manifest.json` 記錄：`document_id`、`scope_id`、`source_url`、`source_type`、`original_filename`、`crawled_at`、`raw_path`、HTTP 結果、`crawl_status` 與失敗時的 `error_message`。
+>
+> ### 限制
+>
+> 不猜測替代網址、不爬範圍外內容、不覆寫 `data/raw/`。
 
 ## 輸出
 
@@ -38,8 +35,8 @@
 
 ## 驗收
 
-manifest 可對照每份原始檔與來源 URL。
+每筆成功資料可由 manifest 回查原始檔、URL、時間與格式；失敗或排除資料有明確原因。
 
 ## 失敗處理
 
-將 HTTP 或下載錯誤寫入 `error_message`，不猜測替代網址。
+若站方規範、下載或網站異常使你無法得到至少三筆可用 chunks，保留已完成紀錄後向講師申請公開備援資料；不可直接跳到備援。

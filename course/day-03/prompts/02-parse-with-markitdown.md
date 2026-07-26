@@ -10,7 +10,7 @@ manifest 中 `crawl_status: success` 的本機原始檔。
 >
 > 從 `crawl_manifest.json` 選一筆 `crawl_status: "success"` 的 `raw_path`。附件應位於 `data/raw/<document_id>/<原始檔名>`。
 >
-> 先確認目前 Codex 是否可呼叫 MarkItDown MCP：
+> 先確認目前 Codex 是否可呼叫 MarkItDown MCP（課堂健康檢查已安裝）：
 >
 > - 工具不可用：停止並回報錯誤。
 > - 工具可用：以本機 `file:` URI 逐筆解析。

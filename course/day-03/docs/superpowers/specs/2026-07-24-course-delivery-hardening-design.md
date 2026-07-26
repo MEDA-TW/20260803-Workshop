@@ -7,7 +7,7 @@
 ## 已確認決策
 
 1. 基本驗收固定為四類：有依據問答、公開聯絡資訊、模糊問題、語料範圍外問題。
-2. 文件衝突或過期是進階挑戰，不列入基本繳交。
+2. 文件衝突或過期是進階挑戰，不列入基本自我檢核。
 3. 講師準備最小公開備援語料，只在網站、下載或解析失敗而無法完成流程時使用；備援不放入學生 project template，亦不取代正常爬取。
 4. 問答紀錄由學生實際操作產生；不再描述為課程提供的模擬紀錄。
 
@@ -15,7 +15,7 @@
 
 ### 課前與失敗備案
 
-README 增加課前檢查清單：Codex 的 MarkItDown MCP、Ollama 與 `qwen2.5:3b`、Python 與 Streamlit。講師在課前確認工具；學生必須在完成第一筆成功下載後，才以該本機檔案驗證 MarkItDown MCP。
+README 改為課堂前 30 分鐘的建置清單：Codex 的 MarkItDown MCP、Ollama 與 `qwen2.5:3b`、`nomic-embed-text-v2-moe`、Python 與 Streamlit。學生先用講師提供的公開範例檔驗證 MarkItDown MCP。
 
 README 與練習 01 增加講師備援規則：由講師提供同樣屬公開來源的最小 HTML、PDF、DOCX 語料與來源資訊；學生將其視為已蒐集資料，仍須建立 manifest、解析、品質檢查與 provenance。正常情況不可跳過爬取直接索取備援。
 
@@ -54,4 +54,4 @@ AI 分析表固定包含 `document_id`、`chunk_id`、`summary`、`category`、`
 
 ## 非範圍
 
-不在課程 repo 提供學生 project template、爬蟲程式或完整 RAG 程式碼；學員仍以各步提示詞在自己的 `team-xx-project/` 實作。
+不在課程 repo 提供學生 project template、爬蟲程式或完整 RAG 程式碼；學員仍以各步提示詞在自己命名的專案資料夾實作。
