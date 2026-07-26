@@ -3,7 +3,7 @@ import { readFileSync } from 'node:fs';
 const checks = [
   {
     name: '00｜個人專案與 scope',
-    path: 'prompts/00-create-project-and-start-url.md',
+    path: 'student-guide/01-start.md',
     required: [
       'data/raw/',
       'data/manifests/',
@@ -17,7 +17,7 @@ const checks = [
   },
   {
     name: '01｜限定範圍爬取',
-    path: 'prompts/01-crawl-specified-site.md',
+    path: 'student-guide/02-crawl.md',
     required: [
       'robots.txt',
       'tve.yuntech.edu.tw',
@@ -33,7 +33,7 @@ const checks = [
   },
   {
     name: '02｜MarkItDown 解析',
-    path: 'prompts/02-parse-with-markitdown.md',
+    path: 'student-guide/03-parse.md',
     required: [
       'crawl_status: "success"',
       'file:',
@@ -49,7 +49,7 @@ const checks = [
   },
   {
     name: '03｜整理與分析',
-    path: 'prompts/03-process-and-analyze-text.md',
+    path: 'student-guide/04-analyze.md',
     required: [
       'ready_for_analysis',
       'chunks.jsonl',
@@ -62,7 +62,7 @@ const checks = [
   },
   {
     name: '04｜引用 RAG',
-    path: 'prompts/04-build-cited-rag.md',
+    path: 'student-guide/05-rag.md',
     required: [
       'streamlit run rag/app.py',
       '問答歷程',
@@ -79,7 +79,7 @@ const checks = [
   },
   {
     name: '05｜自我測試改善',
-    path: 'prompts/05-analyze-query-feedback.md',
+    path: 'student-guide/06-improve.md',
     required: [
       'improvement_backlog.md',
       'query_id',

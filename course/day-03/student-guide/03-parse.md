@@ -1,4 +1,4 @@
-# 02｜解析與品質檢查
+# 03｜解析與品質檢查
 
 ## 輸入
 
@@ -55,3 +55,9 @@ manifest 中 `crawl_status: success` 的本機原始檔。
 ## 失敗處理
 
 解析失敗保留 manifest 與原始檔，標記 `needs_review`。
+
+## 自我檢查
+
+- 先通過 `codex mcp list` 的 `markitdown / enabled` 健康檢查，才開始解析。
+- 每份 Markdown 檔頭保留來源 metadata，並在 `quality_report.jsonl` 有一筆品質結論。
+- `needs_review` 或 `excluded` 都有原因，且不會進入後續分析。

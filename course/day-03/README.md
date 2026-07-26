@@ -58,30 +58,19 @@ RAG 是驗證資料是否可用的一環；本日成果不只是一個 chatbot�
 | 14:30–15:40 | 本機向量檢索與可引用問答 | 測試題、答案、來源證據 |
 | 15:40–16:30 | 自我測試與改善 | 改善 backlog |
 
-## 課程路徑
+## 學生從這裡開始
 
-| 階段 | 提示詞 | 練習 |
-| --- | --- | --- |
-| 建立個人專案與起始網址 | [00-create-project-and-start-url](prompts/00-create-project-and-start-url.md) | 爬取前置 |
-| 爬取與 manifest | [01-crawl-specified-site](prompts/01-crawl-specified-site.md) | [01-crawl-and-manifest](exercises/01-crawl-and-manifest.md) |
-| 確認 MCP、解析與檢查 | [02-parse-with-markitdown](prompts/02-parse-with-markitdown.md) | [02-markdown-quality-check](exercises/02-markdown-quality-check.md) |
-| 整理與分析 | [03-process-and-analyze-text](prompts/03-process-and-analyze-text.md) | [03-ai-text-analysis](exercises/03-ai-text-analysis.md) |
-| 向量檢索問答 | [04-build-cited-rag](prompts/04-build-cited-rag.md) | [04-cited-rag-qa](exercises/04-cited-rag-qa.md) |
-| 自我測試與改善 | [05-analyze-query-feedback](prompts/05-analyze-query-feedback.md) | [05-feedback-to-improvement](exercises/05-feedback-to-improvement.md) |
+請只開啟 [學生操作手冊](student-guide/README.md)，依 01～06 順序完成。每一步已合併「可貼給 Codex 的提示詞」與「自我檢查」；不需要閱讀其他資料夾。
 
-## 教材文件
-
-- [PRD](prd/generative-ai-text-analysis-prd.md)：課程案例、需求與完成條件。
-- [SDD](sdd/generative-ai-text-analysis-sdd.md)：資料流程、檔案責任與資料契約。
-
-## 講師資源
+## 講師與維護者資源
 
 - [安裝與健康檢查指引](instructor-resources/install-and-health-check.md)：課前安裝、課堂前 30 分鐘檢查與常見排錯。
 - [公開備援包](instructor-resources/fallback-package/README.md)：僅在網站、下載、解析或站方規範異常造成學生無法取得至少三筆可用 chunks 時，由講師啟用；不可預先發放。
+- [課程設計文件](maintainer/prd/generative-ai-text-analysis-prd.md)與[技術設計](maintainer/sdd/generative-ai-text-analysis-sdd.md)：僅供講師與維護者。
 
 ## 教材提示詞檢查
 
-在 `course/day-03/` 執行 `node tests/verify-prompt-contracts.mjs`，可檢查六份提示詞是否仍保留課程的資料範圍、provenance、RAG 與自我測試契約。此檢查不取代課堂中的 MarkItDown MCP 與 Ollama 實機健康檢查。
+維護教材時，在 `course/day-03/` 執行 `node maintainer/tests/verify-prompt-contracts.mjs`，可檢查六份學生步驟是否仍保留課程的資料範圍、provenance、RAG 與自我測試契約。此檢查不取代課堂中的 MarkItDown MCP 與 Ollama 實機健康檢查。
 
 ## 建立個人實作資料夾
 
