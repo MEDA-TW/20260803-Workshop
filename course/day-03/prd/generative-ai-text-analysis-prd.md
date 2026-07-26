@@ -16,8 +16,8 @@
 3. 爬取公開 HTML 與附件並記錄 manifest；不得追蹤其他子網域或外部主機、登入內容或受限內容。原始檔不可覆寫，附件保留原始檔名。
 4. 以 Codex 的 MarkItDown MCP 將成功下載的本機檔案轉為 Markdown，產出品質報告；只有 `ready_for_analysis` 文件可被處理。
 5. 將可用 Markdown 切成具完整 provenance 的 chunks，產出 `analysis/text_analysis.md`，明確分開文件證據與 AI 解讀。
-6. 以 Streamlit 建立本機向量檢索問答：使用 `nomic-embed-text-v2-moe` 建立學生自己的本機索引、檢索最多三筆 chunks，再以 Ollama `qwen2.5:3b` 回答。畫面必須顯示前三個 chunk、相似度、文件名稱、URL、段落位置與 `crawled_at`。只有足夠證據才可呼叫回答模型；否則輸出 `insufficient_evidence` 且不生成答案。
-7. 將每次自我測試追加至 `feedback/query_log.jsonl`，並以紀錄產出改善 backlog；改善動作僅能為 `add_source`、`repair_parse`、`revise_chunking_or_metadata`、`improve_retrieval` 或 `revise_prompt`。
+6. 以 Streamlit 建立本機向量檢索問答與「問答歷程」頁面：使用 `nomic-embed-text-v2-moe` 建立學生自己的本機索引、檢索最多三筆 chunks，再以 Ollama `qwen2.5:3b` 回答。問答頁必須顯示前三個 chunk、相似度、文件名稱、URL、段落位置與 `crawled_at`；問答歷程頁只讀取該學生本機的紀錄，依時間由新到舊顯示問題、回答、狀態、引用與自我測試註記。只有足夠證據才可呼叫回答模型；否則輸出 `insufficient_evidence` 且不生成答案。
+7. 將每次自我測試追加至 `feedback/query_log.jsonl`，並以紀錄產出改善 backlog；紀錄保留回答文字與引用，不上傳、不集中收集。改善動作僅能為 `add_source`、`repair_parse`、`revise_chunking_or_metadata`、`improve_retrieval` 或 `revise_prompt`。
 
 ## 非目標與完成條件
 

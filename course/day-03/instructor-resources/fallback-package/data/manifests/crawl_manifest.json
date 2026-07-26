@@ -1,0 +1,38 @@
+[
+  {
+    "document_id": "tve-service-01-html",
+    "scope_id": "day03-instructor-fallback-20260726",
+    "source_url": "https://tve.yuntech.edu.tw/index.php/2020-02-26-09-23-21/item/1020-01",
+    "source_type": "HTML",
+    "original_filename": "service-01.html",
+    "crawled_at": "2026-07-26T21:18:58+08:00",
+    "raw_path": "data/raw/tve-service-01/service-01.html",
+    "http_status": 200,
+    "crawl_status": "success",
+    "sha256": "4416272c0585417b67ab4f301e38c221c0cfe5fe7a72278e22205ff6f7c488c2"
+  },
+  {
+    "document_id": "tve-service-01-plan-pdf",
+    "scope_id": "day03-instructor-fallback-20260726",
+    "source_url": "https://tve.yuntech.edu.tw/index.php/component/k2/item/download/790_cef47f3a4a438b5787b514d312f92bf6",
+    "source_type": "PDF",
+    "original_filename": "1-1博士生修課計畫.pdf",
+    "crawled_at": "2026-07-26T21:18:58+08:00",
+    "raw_path": "data/raw/tve-service-01/1-1博士生修課計畫.pdf",
+    "http_status": 200,
+    "crawl_status": "success",
+    "sha256": "ae5593bf90f3a54a8ce6e2f1b78c0fc4a0e6f6611868737a16c59cb518a15527"
+  },
+  {
+    "document_id": "tve-service-01-plan-docx",
+    "scope_id": "day03-instructor-fallback-20260726",
+    "source_url": "https://tve.yuntech.edu.tw/index.php/component/k2/item/download/791_f57f1dd711c4348ba59b38e30edc2fe6",
+    "source_type": "DOCX",
+    "original_filename": "1-1博士生修課計畫.docx",
+    "crawled_at": "2026-07-26T21:18:58+08:00",
+    "raw_path": "data/raw/tve-service-01/1-1博士生修課計畫.docx",
+    "http_status": 200,
+    "crawl_status": "success",
+    "sha256": "775b0606bd2172506393cdd54babe935333ee056f8e69772ae3edb2346b20de4"
+  }
+]

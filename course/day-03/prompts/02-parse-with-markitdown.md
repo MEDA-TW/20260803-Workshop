@@ -8,12 +8,16 @@ manifest 中 `crawl_status: success` 的本機原始檔。
 
 > ### 選擇輸入與確認工具
 >
-> 從 `crawl_manifest.json` 選一筆 `crawl_status: "success"` 的 `raw_path`。附件應位於 `data/raw/<document_id>/<原始檔名>`。
+> 從 `crawl_manifest.json` 列出所有 `crawl_status: "success"` 的 `raw_path`；附件應位於 `data/raw/<document_id>/<原始檔名>`。先選一筆做工具測試，成功後再逐筆處理其餘成功文件。
 >
-> 先確認目前 Codex 是否可呼叫 MarkItDown MCP（課堂健康檢查已安裝）：
+> 先確認課堂健康檢查是否通過：在 Terminal 執行 `codex mcp list`，必須看到 `markitdown` 且狀態為 `enabled`。若沒有或不是 `enabled`，停止解析，依講師提供的安裝指引新增一次設定，完全重開 Codex、建立新的 task 後再檢查；不要自行安裝其他 MCP server。
+>
+> 接著確認目前 Codex 是否可呼叫 MarkItDown MCP：
 >
 > - 工具不可用：停止並回報錯誤。
 > - 工具可用：以本機 `file:` URI 逐筆解析。
+
+> 每處理一筆，先回報 `document_id`、輸入 `file:` URI 與預定輸出路徑；確認寫入品質報告後才處理下一筆。
 >
 > ### 轉換產物
 >

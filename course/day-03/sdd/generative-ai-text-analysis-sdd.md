@@ -27,11 +27,11 @@
 
 ## RAG 與自我測試契約
 
-RAG 介面為 `rag/app.py` 的 Streamlit 本機網頁。`nomic-embed-text-v2-moe` 將 chunks 與問題向量化，索引與向量僅存於學生專案資料夾；檢索最多三筆，畫面顯示每筆的 `chunk_id`、相似度與 provenance。只有足夠證據才呼叫 `qwen2.5:3b`。
+RAG 介面為 `rag/app.py` 的 Streamlit 本機網頁，含「問答」與「問答歷程」兩個頁面。`nomic-embed-text-v2-moe` 將 chunks 與問題向量化，索引與向量僅存於學生專案資料夾；檢索最多三筆，問答頁顯示每筆的 `chunk_id`、相似度與 provenance。問答歷程頁只讀取同一專案的 `feedback/query_log.jsonl`，依 `asked_at` 由新到舊顯示紀錄；不建立帳號、伺服器或跨學生彙整。只有足夠證據才呼叫 `qwen2.5:3b`。
 
 回應格式固定含 `answer`、`answer_status`、`retrieved_chunk_ids`、`retrieval_scores`、`citations`（文件名、URL、頁碼或 anchor）、`crawled_at`、`limitations`。期限、數字、單位、承辦人或公開聯絡資訊必須可逐字在 retrieved chunks 中核對。若沒有足夠 chunk 證據，`answer_status` 必為 `insufficient_evidence`，不得呼叫模型或補造答案；每一頁顯示「依本次爬取資料回答，請以原始網站最新公告為準。」
 
-每次學生自我測試追加至 `feedback/query_log.jsonl`，每筆包含 `query_id`、`asked_at`、`question`、`expected_result`、`answer_status`、`cited_chunk_ids`、`retrieval_scores`、`self_test_note`、`notes`。改善 backlog 的每一項回連 query_id，並且改善動作只能使用 PRD 定義的五種之一。
+每次學生自我測試追加至 `feedback/query_log.jsonl`，每筆包含 `query_id`、`asked_at`、`question`、`answer`、`expected_result`、`answer_status`、`cited_chunk_ids`、`retrieval_scores`、`self_test_note`、`notes`。`answer` 為實際顯示的回答；若為 `insufficient_evidence`，記錄固定的不足證據說明。改善 backlog 的每一項回連 query_id，並且改善動作只能使用 PRD 定義的五種之一。
 
 ## 錯誤與安全
 

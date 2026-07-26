@@ -9,6 +9,8 @@
 > ### 讀取範圍
 >
 > 只讀取 `data/markdown/quality_report.jsonl` 中 `quality_status` 為 `ready_for_analysis` 的 Markdown。
+
+> 開始前先列出將處理的 `document_id`；若不足三筆可用 chunks，停止並依備援規則處理，不要用 `needs_review` 文件湊數。
 >
 > ### 建立 chunks
 >
@@ -46,6 +48,8 @@
 > ### 例外處理
 >
 > 結構不清或內容缺漏時，更新品質報告為 `needs_review`；不要產生可供 RAG 使用的 chunk。
+
+> 更新品質狀態時，保留原有品質報告紀錄，另追加一筆含原因與檢查時間的新紀錄；不要覆寫原始 Markdown 或 raw 檔。
 
 ## 驗收
 

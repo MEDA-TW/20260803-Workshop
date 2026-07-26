@@ -1,0 +1,12 @@
+{
+  "scope_id": "day03-instructor-fallback-20260726",
+  "start_url": "https://tve.yuntech.edu.tw/",
+  "allowed_hosts": ["tve.yuntech.edu.tw"],
+  "allowed_path_prefix": "/",
+  "allowed_formats": ["HTML", "PDF", "DOCX"],
+  "max_pages": 20,
+  "max_attachments": 20,
+  "request_delay_seconds": 1,
+  "created_at": "2026-07-26T21:18:58+08:00",
+  "notes": "講師專用公開備援。建立時 robots.txt 回傳 404；這不是自動擷取許可，啟用前必須重新確認當日 robots.txt 與網站規範。僅在學生因網站、下載、解析或站方規範異常而無法取得至少三筆 ready_for_analysis chunks 時使用。"
+}

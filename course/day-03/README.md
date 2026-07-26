@@ -17,7 +17,7 @@ RAG 是驗證資料是否可用的一環；本日成果不只是一個 chatbot�
 
 09:00–09:30 在課堂中完成下列工具安裝與檢查；講師提供操作協助。學生須在自己的電腦上完成：
 
-- 在 Codex 啟用 MarkItDown MCP，並以講師提供的公開範例檔用本機 `file:` URI 成功解析一次。
+- 在 Terminal 執行 `codex mcp list`，確認出現 `markitdown` 且狀態為 `enabled`；再在 Codex 以講師提供的公開範例檔用本機 `file:` URI 成功解析一次。若未出現，依[安裝與健康檢查指引](instructor-resources/install-and-health-check.md)處理。
 - 安裝 Ollama，執行 `ollama pull qwen2.5:3b` 與 `ollama pull nomic-embed-text-v2-moe`。
 - 安裝 Python 套件 `streamlit` 與 Ollama Python 用戶端，確認 Python 可執行。
 - 以 `ollama list` 確認兩個模型都存在；Day-03 不使用雲端 API。
@@ -74,6 +74,15 @@ RAG 是驗證資料是否可用的一環；本日成果不只是一個 chatbot�
 - [PRD](prd/generative-ai-text-analysis-prd.md)：課程案例、需求與完成條件。
 - [SDD](sdd/generative-ai-text-analysis-sdd.md)：資料流程、檔案責任與資料契約。
 
+## 講師資源
+
+- [安裝與健康檢查指引](instructor-resources/install-and-health-check.md)：課前安裝、課堂前 30 分鐘檢查與常見排錯。
+- [公開備援包](instructor-resources/fallback-package/README.md)：僅在網站、下載、解析或站方規範異常造成學生無法取得至少三筆可用 chunks 時，由講師啟用；不可預先發放。
+
+## 教材提示詞檢查
+
+在 `course/day-03/` 執行 `node tests/verify-prompt-contracts.mjs`，可檢查六份提示詞是否仍保留課程的資料範圍、provenance、RAG 與自我測試契約。此檢查不取代課堂中的 MarkItDown MCP 與 Ollama 實機健康檢查。
+
 ## 建立個人實作資料夾
 
 clone 課程 repo 後，每位學員在 `course/day-03/` 下自行建立工作資料夾（名稱自訂）；不要改動講義、提示詞或練習檔。
@@ -98,9 +107,9 @@ my-project/
 
 1. `data/manifests/crawl_scope.json` 記錄統一起始網址、完整主機、格式、20／20 上限與爬取規則；`data/raw/` 與 `crawl_manifest.json` 可回查來源。
 2. `data/markdown/` 與 `data/markdown/quality_report.jsonl` 均有每份文件的品質結論。
-3. 至少三筆 `data/processed/<document_id>.chunks.jsonl`、`analysis/text_analysis.md` 與來源段落；只讓 `ready_for_analysis` chunks 進入索引。
-4. 可由 `streamlit run rag/app.py` 開啟的本機助手，使用向量檢索最多三個 chunks；每一個有根據的回答附文件、URL、段落位置與 `crawled_at`，並顯示前三個 chunks 與相似度。無證據時輸出 `insufficient_evidence`，不呼叫回答模型。
-5. 自行設計並完成四類測試：有依據問題、公開聯絡資訊、模糊問題、語料範圍外問題；每題寫入 `feedback/query_log.jsonl`，包含自我測試評註。
+3. 至少三筆 `ready_for_analysis` chunks，存於 `data/processed/<document_id>.chunks.jsonl`，並完成 `analysis/text_analysis.md` 與來源段落；只讓 `ready_for_analysis` chunks 進入索引。
+4. 可由 `streamlit run rag/app.py` 開啟的本機助手，提供「問答」與「問答歷程」頁；使用向量檢索最多三個 chunks，每一個有根據的回答附文件、URL、段落位置與 `crawled_at`，並顯示前三個 chunks 與相似度。無證據時輸出 `insufficient_evidence`，不呼叫回答模型。
+5. 自行設計並完成四類測試：有依據問題、公開聯絡資訊、模糊問題、語料範圍外問題；每題寫入 `feedback/query_log.jsonl`，包含實際回答與自我測試評註，並在本機問答歷程頁確認紀錄與引用可見。
 6. 由問答紀錄產出 `feedback/improvement_backlog.md`，每項都能回連 query_id 與一項允許的改善動作。
 
 介面固定提醒：「依本次爬取資料回答，請以原始網站最新公告為準。」評量不存在；重點是學生能在自己的電腦上完成並核對完整證據鏈。
