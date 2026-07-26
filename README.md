@@ -42,11 +42,11 @@
 
 ## 三日議程速覽
 
-| 日期 | 主題 | 重點產出 |
+| 日期 | 主題 | 實戰應用 |
 |:-----|:-----|:---------|
-| [Day 1 · 8/3](./course/day-01/README.md) | Vibe Coding 概念 + 資料視覺化儀表板 | 第一個 AI 生成的儀表板 |
-| [Day 2 · 8/4](./course/day-02/README.md) | 政府開放資料抓取與品質檢查 | 一份可重現的資料抓取流程 |
-| [Day 3 · 8/5](./course/day-03/README.md) | 地理空間繪圖 + 文本分析 | 空間分布圖 + 文本分析成果 |
+| [Day 1 · 8/3](./course/day-01/README.md) | Vibe Coding 概念與基礎操作 | 資料視覺化與儀表板的製作 |
+| [Day 2 · 8/4](./course/day-02/README.md) | 公開數據介紹與應用 | 政府開放數據抓取與清理 |
+| [Day 3 · 8/5](./course/day-03/README.md) | 生成式人工智慧於文本資料分析 | RAG 問答機器人 |
 
 ---
 
