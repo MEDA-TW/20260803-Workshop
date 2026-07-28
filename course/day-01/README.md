@@ -11,6 +11,7 @@
 | 學員 | [STUDENT_GUIDE.md](STUDENT_GUIDE.md) |
 | 講師或 TA | [INSTRUCTOR_GUIDE.md](INSTRUCTOR_GUIDE.md) |
 | 要列印講義 | [HANDOUTS.md](HANDOUTS.md) |
+| 要播放上課簡報 | [20260803-Vibe-Coding-Day-01.pptx](slides/20260803-Vibe-Coding-Day-01.pptx) |
 | 要開啟實作專案 | [project/](project/README.md) |
 
 ## 今天會做出什麼
@@ -29,6 +30,7 @@ day-01/
 ├── STUDENT_GUIDE.md
 ├── INSTRUCTOR_GUIDE.md
 ├── HANDOUTS.md
+├── slides/               上課簡報
 └── project/              完整、可執行的課堂專案
 ```
 

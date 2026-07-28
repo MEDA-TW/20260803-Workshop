@@ -42,6 +42,14 @@
 - **Tools／Skills**：雙手與 SOP。
 - **Memory**：短期對話＋長期專案文件。
 
+### 先看任務，再選 Agent
+
+- 建立或修改程式：Codex、Claude Code
+- 長期個人助理：Hermes Agent、OpenClaw
+- 管理多個 Agent：LobeHub
+
+> Agent 多不等於比較厲害；先看任務、介面、資料位置與維護成本。
+
 ### 三個檔名
 
 - `README.md`：今天要做什麼。

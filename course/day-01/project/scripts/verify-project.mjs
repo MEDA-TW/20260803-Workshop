@@ -38,6 +38,9 @@ const textContracts = [
   [dayRoot, "STUDENT_GUIDE.md", "只修改 `src/App.tsx`"],
   [dayRoot, "STUDENT_GUIDE.md", "ResponsiveContainer"],
   [dayRoot, "STUDENT_GUIDE.md", "Push origin"],
+  [dayRoot, "STUDENT_GUIDE.md", "Agent 多不等於比較厲害"],
+  [dayRoot, "INSTRUCTOR_GUIDE.md", "五大 Agent 系統"],
+  [dayRoot, "INSTRUCTOR_GUIDE.md", "3aa3e7cf7dce807f92fafd8a09d99fa9"],
   [dayRoot, "HANDOUTS.md", "目標 Goal"],
   [dayRoot, "HANDOUTS.md", "你可以把手放開，但不能把眼睛閉上"],
 ]
