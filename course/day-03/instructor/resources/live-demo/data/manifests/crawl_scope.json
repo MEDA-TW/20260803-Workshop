@@ -1,0 +1,12 @@
+{
+  "scope_id": "day03-live-demo-tve-yuntech-20260729",
+  "start_url": "https://tve.yuntech.edu.tw/",
+  "allowed_hosts": ["tve.yuntech.edu.tw", "lc.yuntech.edu.tw", "aax.yuntech.edu.tw"],
+  "allowed_paths": ["/", "/index.php/2020-02-26-09-22-41", "/index.php/2020-02-26-09-23-21", "/index.php/2020-02-26-09-22-35/2021-08-04-02-16-18", "/images/本所法規/115研究生手冊.docx", "/index.php/2021-07-23-07-12-23", "/index.php/ql-ct/calendar", "/images/content/行事曆/115學年第1學期行事曆.pdf"],
+  "allowed_formats": ["HTML", "PDF", "DOCX"],
+  "max_pages": 6,
+  "max_attachments": 8,
+  "request_delay_seconds": 1,
+  "created_at": "2026-07-29T12:37:26+08:00",
+  "notes": "講師即時示範資料。robots.txt 在此次檢查回傳 404；這不是自動擷取許可。除首頁公開選單與服務項目頁直接連結的附件外，為碩士班 Demo 直接納入本所法規頁連結的 115 學年度研究生手冊，以及語言中心公開英文畢業門檻頁；不登入、不搜尋、不追蹤其他外部連結。"
+}

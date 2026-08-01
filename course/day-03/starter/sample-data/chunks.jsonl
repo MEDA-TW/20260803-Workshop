@@ -1,0 +1,2 @@
+{"document_id":"sample-course","chunk_id":"sample-001","section":"健康檢查","text":"這是 Day 3 starter 的公開健康檢查資料。sample-data 只能用來確認本機 RAG、引用與問答歷程是否可用，不能作為最後展示的資料來源。","source_url":"https://example.org/day-03-sample","crawled_at":"2026-07-29T00:00:00Z"}
+{"document_id":"sample-course","chunk_id":"sample-002","section":"證據鏈","text":"Day 3 最後展示需要一題有引用的問答、該題的問答歷程、來源段落與一項改善 backlog。資料不足時系統應輸出 insufficient_evidence。","source_url":"https://example.org/day-03-sample","crawled_at":"2026-07-29T00:00:00Z"}
