@@ -31,9 +31,8 @@ def load_index() -> tuple[list[dict], str]:
 
 
 def cosine(left: list[float], right: list[float]) -> float:
-    numerator = sum(a * b for a, b in zip(left, right))
     denominator = math.sqrt(sum(a * a for a in left)) * math.sqrt(sum(b * b for b in right))
-    return numerator / denominator if denominator else 0.0
+    return sum(a * b for a, b in zip(left, right)) / denominator if denominator else 0.0
 
 
 def model_available(requested: str, installed: set[str]) -> bool:
@@ -52,7 +51,19 @@ def read_history() -> list[dict]:
     return [json.loads(line) for line in LOG_PATH.read_text(encoding="utf-8").splitlines() if line.strip()]
 
 
+def dedupe_ranked(ranked: list[tuple[float, dict]]) -> list[tuple[float, dict]]:
+    seen: set[tuple[str, str]] = set()
+    result = []
+    for score, chunk in ranked:
+        key = (chunk.get("document_id", ""), chunk.get("section", ""))
+        if key not in seen:
+            seen.add(key)
+            result.append((score, chunk))
+    return result
+
+
 def render_source_card(ranked: list[tuple[float, dict]]) -> None:
+    ranked = dedupe_ranked(ranked)
     if not ranked:
         return
     top_score, top_chunk = ranked[0]
@@ -72,15 +83,10 @@ def render_source_card(ranked: list[tuple[float, dict]]) -> None:
 
 
 def answer_mode_label(answer_mode: str) -> str:
-    return {
-        "fast_evidence": "快速回答",
-        "model_summary": "模型整理",
-        "insufficient_evidence": "資料不足",
-    }.get(answer_mode, "系統訊息")
+    return {"fast_evidence": "快速回答", "model_summary": "模型整理", "insufficient_evidence": "資料不足"}.get(answer_mode, "系統訊息")
 
 
 def render_chat_message(message: dict) -> None:
-    """Render one message immediately so a submitted question is visible during retrieval."""
     role_class = "chat-user" if message["role"] == "user" else "chat-assistant"
     content = escape(message["content"]).replace("\n", "<br>")
     st.markdown(f'<div class="chat-row {role_class}"><div class="chat-bubble">{content}</div></div>', unsafe_allow_html=True)
@@ -108,9 +114,8 @@ def ask(question: str, chunks: list[dict]) -> dict:
         fast_result = direct_evidence_answer(question, ranked)
         if fast_result:
             answer, primary = fast_result
-            ranked = [primary] + [item for item in ranked if item != primary]
-            status = "answered"
-            answer_mode = "fast_evidence"
+            ranked = [primary]
+            status, answer_mode = "answered", "fast_evidence"
             progress.update(label="已依明確來源快速回答", state="complete")
         elif ranked and ranked[0][0] >= 0.35:
             progress.update(label="正在依來源組織回答…")
@@ -122,12 +127,11 @@ def ask(question: str, chunks: list[dict]) -> dict:
             prompt = f"""你是嚴謹的校務文件問答助手。只可根據下方來源，以繁體中文直接回答。
 
 規則：
-1. 清單問題以最多六個條列回答；其他問題用一段短答。
-2. 不寒暄、不重述問題、不猜測，也不編造日期、規定或表單。
-3. 不要自行加入引用格式；介面會顯示來源。
-4. 若來源標示適用年度，第一句必須先說「依＿＿＿」並使用該年度規則；不得混用不同年度的規定。
-5. 若來源標示「112 學年度後入學」或內容要求洽各系所確認，只能說明須向系所確認，不得附帶 111 學年度前的數值門檻。
-6. 回答限 140 個中文字；資料不足時只回答 insufficient_evidence。
+1. 引用內容必須直接支持答案；不猜測或編造日期、規定、數字、期限或表單。
+2. 若題目或來源缺少會影響答案的條件，說明條件差異並請使用者補充。
+3. 來源標示適用年度時，第一句先說明適用範圍；不得混用不同年度規定。
+4. 資料不足時只回答「資料不足，無法根據目前來源回答」。
+5. 回答限 140 個中文字；不自行加入引用格式，介面會顯示來源。
 
 來源：
 {context}
@@ -139,23 +143,19 @@ def ask(question: str, chunks: list[dict]) -> dict:
                 options={"temperature": 0, "num_predict": 160, "num_ctx": 2048},
                 keep_alive=0,
             )["message"]["content"]
-            status = "answered"
-            answer_mode = "model_summary"
+            status, answer_mode = "answered", "model_summary"
             progress.update(label="回答完成", state="complete")
         else:
-            answer = "insufficient_evidence：目前資料沒有足夠證據回答這個問題。"
-            status = "insufficient_evidence"
-            answer_mode = "insufficient_evidence"
+            answer, status, answer_mode = "資料不足，無法根據目前來源回答", "insufficient_evidence", "insufficient_evidence"
             progress.update(label="資料不足，未呼叫回答模型", state="complete")
-        citations = [chunk.get("chunk_id", "unknown") for _, chunk in ranked]
-        scores = [round(score, 3) for score, _ in ranked]
+    ranked = dedupe_ranked(ranked)
     return {
         "answer": answer,
         "answer_status": status,
         "answer_mode": answer_mode,
         "ranked": ranked,
-        "cited_chunk_ids": citations,
-        "retrieval_scores": scores,
+        "cited_chunk_ids": [chunk.get("chunk_id", "unknown") for _, chunk in ranked],
+        "retrieval_scores": [round(score, 3) for score, _ in ranked],
         "latency_seconds": round(time.perf_counter() - started_at, 1),
     }
 
@@ -191,13 +191,7 @@ def render_chat_page(chunks: list[dict], data_source: str, ollama_error: str | N
         try:
             result = ask(question, chunks)
             st.session_state.chat_messages.append(
-                {
-                    "role": "assistant",
-                    "content": result["answer"],
-                    "citations": result["ranked"],
-                    "latency_seconds": result["latency_seconds"],
-                    "answer_mode": result["answer_mode"],
-                }
+                {"role": "assistant", "content": result["answer"], "citations": result["ranked"], "latency_seconds": result["latency_seconds"], "answer_mode": result["answer_mode"]}
             )
             append_log(
                 {
@@ -239,16 +233,7 @@ def render_history_page(chunk_by_id: dict[str, dict]) -> None:
     metric_3.metric("已回答", summary["answered"])
     metric_4.metric("平均秒數", f"{summary['average_latency']:.1f}")
     st.dataframe(
-        [
-            {
-                "開始時間": conversation["started_at"],
-                "主要主題": conversation["main_topic"],
-                "問答數": conversation["turn_count"],
-                "已回答": conversation["answered_count"],
-                "平均秒數": conversation["average_latency"],
-            }
-            for conversation in conversations
-        ],
+        [{"開始時間": item["started_at"], "主要主題": item["main_topic"], "問答數": item["turn_count"], "已回答": item["answered_count"], "平均秒數": item["average_latency"]} for item in conversations],
         use_container_width=True,
         hide_index=True,
     )

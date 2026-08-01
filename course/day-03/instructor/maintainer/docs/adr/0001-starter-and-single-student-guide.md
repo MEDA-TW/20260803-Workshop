@@ -1,6 +1,6 @@
 # 以獨立 starter 與單一學生操作手冊帶領 Day 3
 
-Day 3 改採 private GitHub Template 的學生 starter，而非在整份教材 repo 中建立個人資料夾；starter 預載可啟動的 Streamlit RAG 與僅供健康檢查的公開 sample chunks。學生端改為單一 `STUDENT_GUIDE.md`，依序完成資料範圍、公開資料、解析、分析、RAG 接線與測試、改善。這保留學生自己的證據鏈與判讀工作，同時移除從零建立 Python／Streamlit 腳手架所造成的主要失敗點。
+Day 3 改採 private GitHub Template 的學生 starter，而非在整份教材 repo 中建立個人資料夾；starter 提供資料夾結構與僅供健康檢查的公開 sample chunks。學生端改為單一 `STUDENT_GUIDE.md`，依序完成資料範圍、公開資料、解析、分析、RAG 接線與測試、改善。這保留學生自己的證據鏈與判讀工作，同時以 Streamlit 建立聊天介面。
 
 ## Consequences
 

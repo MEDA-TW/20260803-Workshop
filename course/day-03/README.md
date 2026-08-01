@@ -131,7 +131,7 @@ Day 3 不要求公開部署；是否需提供分支連結，依講師當日說�
 1. `data/manifests/crawl_scope.json` 記錄四份指定網址、格式、20／20 上限與爬取規則；`data/raw/` 與 `data/manifests/crawl_manifest.jsonl` 可回查來源。`crawl_manifest.jsonl` 每行一份指定來源，記錄文件識別、URL、格式、取得時間、原始檔路徑與成功／失敗狀態。
 2. `data/markdown/` 與 `data/markdown/quality_report.jsonl` 均有每份文件的品質結論。
 3. 至少三筆 `ready_for_analysis` chunks，存於 `data/processed/<document_id>.chunks.jsonl`，並完成 `analysis/text_analysis.md` 與來源段落；只讓 `ready_for_analysis` chunks 進入索引。
-4. 可由 `python -m streamlit run rag/app.py` 開啟的本機助手，提供「問答」與「問答紀錄」頁；使用向量檢索最多三個 chunks，每一個有根據的回答附文件、URL、段落位置與 `crawled_at`，並顯示前三個 chunks 與相似度。無證據時輸出 `insufficient_evidence`，不呼叫回答模型。
+4. 可由 `python -m streamlit run rag/app.py` 開啟的 Streamlit 本機助手，提供「問答」與「問答紀錄」頁；使用向量檢索最多三個 chunks，每一個有根據的回答附文件、URL、段落位置與 `crawled_at`，並顯示前三個 chunks 與相似度。無證據時輸出 `insufficient_evidence`，不呼叫回答模型。
 5. 完成四類測試：修課與畢業學分、英文門檻與年度、流程或表單、校務日期；每題寫入 `feedback/query_log.jsonl`，包含實際回答與自我測試評註，並在本機問答紀錄頁確認紀錄與引用可見。英文與日期題必須顯示適用年度或公告日期。
 6. 由問答紀錄產出 `feedback/improvement_backlog.md`，每項都能回連 query_id 與一項允許的改善動作。
 

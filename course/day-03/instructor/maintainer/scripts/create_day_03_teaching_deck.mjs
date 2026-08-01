@@ -293,7 +293,7 @@ function processNode(slide, x, y, label, sub, color, index) {
 
 // 13 — RAG
 {
-  const slide = base('Step 04｜用 Codex 建立 Streamlit RAG 問答助手', 'RAG', 13, { active: 4, kicker: '操作 05 · 04-build-cited-rag' });
+  const slide = base('Step 04｜用 Codex 建立 Streamlit RAG 問答助手', 'RAG', 13, { active: 4, kicker: '操作 05 · 05-1 → 05-4' });
   const stages = [
     ['先建介面', 'Codex 從空白建立\nrag/app.py', C.coral], ['接上我的索引', 'vector_index.jsonl\n最多三筆', C.teal], ['本機模型', 'Ollama\nqwen2.5:3b', C.ink], ['回答＋引用', '答案、URL、年度、時間', C.teal],
   ];
@@ -302,7 +302,7 @@ function processNode(slide, x, y, label, sub, color, index) {
     card(slide, x, 2.0, 2.55, 2.2, s[0], s[1], C.white, s[2], { headingSize: 17, bodySize: 13.5 });
     if (i < 3) text(slide, '→', x + 2.62, 2.87, 0.35, 0.25, { fontSize: 25, bold: true, color: C.coral, align: 'center' });
   });
-  note(slide, '介面在資料與索引完成後才建立；學生要核對的是找回的 evidence 是否支撐回答。', '依提示詞 05-1 到 05-3 建立 Streamlit 介面，再接上自己的向量索引。');
+  note(slide, '介面在資料與索引完成後才建立；學生要核對的是找回的 evidence 是否支撐回答。', '依提示詞 05-1 到 05-4 建立 Streamlit 介面，再接上自己的向量索引。');
 }
 
 // 14 — supported chat

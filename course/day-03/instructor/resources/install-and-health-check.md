@@ -30,7 +30,7 @@ macOS：
 ```bash
 source .venv/bin/activate
 python -m pip install --upgrade pip
-python -m pip install streamlit ollama
+python -m pip install -r requirements.txt
 ```
 
 Windows PowerShell：
@@ -38,7 +38,7 @@ Windows PowerShell：
 ```powershell
 .venv\Scripts\Activate.ps1
 python -m pip install --upgrade pip
-python -m pip install streamlit ollama
+python -m pip install -r requirements.txt
 ```
 
 若 `python3` 找不到，先安裝 Python 後再回到這一步；不要混用不同 Python 的 `pip`。
@@ -80,7 +80,7 @@ ollama list
 | --- | --- | --- |
 | `ollama: command not found` | 重新開啟 Terminal；確認 Ollama App 已啟動 | 仍找不到命令列工具 |
 | `ollama pull` 失敗 | 記下完整錯誤，檢查網路與磁碟空間 | 重試一次仍失敗 |
-| Python 匯入失敗 | 確認已啟用 `.venv`，再執行 `python -m pip install streamlit ollama` | 仍出現相同錯誤 |
+| Python 匯入失敗 | 確認已啟用 `.venv`，再執行 `python -m pip install -r requirements.txt` | 仍出現相同錯誤 |
 | Codex Desktop 的 `/mcp` 沒有 `markitdown` 或不是 `enabled` | 重開 Codex、建立新 task，再輸入 `/mcp` | 仍未顯示或無法呼叫工具 |
 | Codex 找不到 MarkItDown 工具 | 不改裝其他 server；保留錯誤文字 | 請講師檢查教室提供的 MCP 設定與 task 工具注入狀態 |
 | 本機模型服務無法啟動 | 保留錯誤；可繼續完成 scope、raw、manifest、Markdown 與品質檢查 | RAG 介面必須顯示修復指引，不得假裝生成答案 |
