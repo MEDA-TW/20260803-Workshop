@@ -4,18 +4,29 @@
 
 純前端數據儀表板，讀取靜態 CSV 檔案，不需要後端伺服器、不需要資料庫、不需要 Docker。
 
-## 技術選型
+## 技術選型與版本基線
 
-| 層級 | 技術 | 用途 |
-|------|------|------|
-| 前端框架 | React 18+ | 建立 UI 元件與頁面結構 |
-| 型別系統 | TypeScript | 型別檢查，提升程式碼品質 |
-| 建置工具 | Vite | 開發伺服器與打包 |
-| UI 元件庫 | shadcn/ui | 按鈕、卡片、下拉選單、表格等可複用的 UI 元件 |
-| CSS 框架 | Tailwind CSS | 樣式設定，不需手寫 CSS |
-| 圖表庫 | Recharts | 長條圖、散佈圖、圓餅圖等數據圖表 |
-| 數據讀取 | PapaParse | 解析 CSV 檔案為 JavaScript 物件 |
-| 套件管理 | npm | 安裝和管理依賴套件 |
+以下是本課程專案產生與驗收時使用的版本基線。版本號尚未由
+`package.json`／lockfile 鎖定前，代表「允許的主要版本範圍」；實際建立專案後，應以
+`package-lock.json` 的完整版本為最終依據。
+
+| 層級 | 技術 | 版本基線 | 用途 |
+|------|------|------|------|
+| 執行環境 | Node.js | 22.x LTS | 執行開發伺服器與建置工具 |
+| 套件管理 | npm | 11.x | 安裝和管理依賴套件 |
+| 前端框架 | React | 18.3.x | 建立 UI 元件與頁面結構 |
+| 型別系統 | TypeScript | 5.8.x | 型別檢查，提升程式碼品質 |
+| 建置工具 | Vite | 8.1.x | 開發伺服器與打包 |
+| UI 元件庫 | shadcn/ui | 產生器／元件以當期設定為準 | 按鈕、卡片、下拉選單、表格等可複用的 UI 元件 |
+| CSS 框架 | Tailwind CSS | 3.4.x | 樣式設定，不需手寫 CSS |
+| 圖表庫 | Recharts | 2.15.x | 長條圖、散佈圖、圓餅圖等數據圖表 |
+| 數據讀取 | PapaParse | 5.4.x | 解析 CSV 檔案為 JavaScript 物件 |
+
+### 版本規則
+
+- 不升級至 Tailwind CSS 4、Recharts 3 或其他會改變教材 API 的 major 版本，除非同步更新教材與重新驗收。
+- `shadcn/ui` 不是單一 runtime 套件；它會把元件程式碼產生到專案內，版本相容性以產生當下的元件程式碼與 `package-lock.json` 為準。
+- 若 Codex 產生的 `package.json` 與本表不同，應先以本表為基線，再由 `npm install` 產生 lockfile；不要使用未指定 major 版本的 `latest`。
 
 ## 為什麼不用 Docker？
 
