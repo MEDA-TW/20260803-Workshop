@@ -19,20 +19,6 @@
 
 ---
 
-## 課前準備
-
-> 開課前請先安裝下列工具；請從 [`環境安裝指南`](./docs/01-getting-started/01-environment-setup.md) 開始，GitHub Desktop 的操作則參考 [`GitHub Desktop 安裝`](./docs/01-getting-started/02-github-desktop.md)。
-
-| 工具 | 用途 | 平台 |
-|:-----|:-----|:-----|
-| [Visual Studio Code](https://code.visualstudio.com/) | 主要 IDE / 程式碼編輯器 | Windows / macOS |
-| [GitHub Desktop](https://desktop.github.com/) | 圖形化 Git 工具，下載與繳交作業 | Windows / macOS |
-| [Node.js LTS](https://nodejs.org/) | 執行前端 / JavaScript 工具鏈 | Windows / macOS |
-| [Python 3.11+](https://www.python.org/) | 資料處理、爬蟲、儀表板後端 | Windows / macOS |
-| AI 編碼助手（**Codex** 主要，可選 Claude Code / Cursor） | Vibe Coding 的核心搭擋 | 依工具而定 |
-
----
-
 ## 專案結構
 
 ```
@@ -62,9 +48,8 @@
 
 ## 如何使用本專案
 
-1. **課前**：依照 [`docs/`](./docs/) 的指南完成工具安裝與 GitHub 基本操作。
-2. **上課**：先閱讀 [`course/README.md`](./course/README.md)，再進入當天的 `course/day-XX/README.md`；各日教材結構可能不同，請以當日 README 的指引為準。
-3. **課後**：依當日 README 的說明整理成果、建立練習分支並繳交；不要直接修改本教材的共用內容。
+1. **上課**：進入當天的 `course/day-XX/README.md`；各日教材結構可能不同，請以當日 README 的指引為準。
+2. **課後**：依當日 README 的說明整理成果、建立練習分支並繳交；不要直接修改本教材的共用內容。可參考 [`docs/`](./docs/) 的指南完成工具安裝與 GitHub 基本操作。
 
 ## 資料夾說明
 
