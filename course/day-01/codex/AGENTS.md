@@ -12,7 +12,7 @@
 
 - 專案用途：學生學習表現數據儀表板，教學練習用
 - 使用者或目標對象：教師、行政人員、研究生（非技術背景）
-- 主要技術：React 18+、TypeScript、Tailwind CSS、shadcn/ui、Recharts
+- 主要技術：React 18+、TypeScript、Tailwind CSS、shadcn/ui、Recharts，遵循 `TECH_STACK.md`
 - 套件管理工具：npm
 - 啟動方式：`npm install` → `npm run dev`
 - 重要目錄：`src/components/` 放 UI 元件，`src/data/` 放資料處理邏輯
