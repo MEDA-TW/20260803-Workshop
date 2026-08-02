@@ -8,9 +8,7 @@
 ```text
 day-01/
 ├── README.md
-├── STUDENT_GUIDE.md
-├── INSTRUCTOR_GUIDE.md
-├── HANDOUTS.md
-├── slides/               上課簡報
-└── project/              完整、可執行的課堂專案
+├── 20260803-雲科大Vibe Coding工作坊.pdf
+├── codex/
+└── hermes/
 ```
