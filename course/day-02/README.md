@@ -2,6 +2,10 @@
 
 > 講師：鄧永裕 Jeff
 
+## 課程簡報與補充教材
+
+- [Day 2 課程簡報與補充教材（Google Drive）](https://drive.google.com/drive/folders/1NwGgV0y_w7HLV0Iej5cFhKl5opb6bQDu?usp=sharing)
+
 ## 課程資料
 
 ### 高級中等學校科別資料（103–114 學年）
