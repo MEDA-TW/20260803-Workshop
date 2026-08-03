@@ -14,7 +14,7 @@
 - docs
 
 將課堂資料下載到 data/raw/moe_high_school_departments_103_114.csv：
-https://raw.githubusercontent.com/MEDA-TW/20260803-Workshop/main/course/day-02/moe_high_school_departments_103_114.csv
+https://raw.githubusercontent.com/MEDA-TW/20260803-Workshop/main/course/day-02/data/raw/moe_high_school_departments_103_114.csv
 
 如果同名檔案已存在，不要重新下載或覆寫。接著檢查檔案能否讀取，回報資料列數、欄位數、學年度範圍及前 10 個欄位名稱，但先不要清理資料。
 
