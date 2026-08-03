@@ -7,7 +7,6 @@ import ollama
 
 ROOT = Path(__file__).resolve().parents[1]
 STUDENT_DATA = ROOT / "data" / "processed"
-SAMPLE_CHUNKS = ROOT / "sample-data" / "chunks.jsonl"
 EMBED_MODEL = "nomic-embed-text-v2-moe"
 INSTRUCTOR_DEMO_FILES = {
     "tve-yuntech-live.chunks.jsonl",
@@ -35,11 +34,11 @@ def select_chunk_files(data_directory: Path) -> list[Path]:
 
 def main() -> None:
     student_files = select_chunk_files(STUDENT_DATA)
-    files = student_files or [SAMPLE_CHUNKS]
-    output = STUDENT_DATA / "vector_index.jsonl" if student_files else ROOT / "sample-data" / "vector_index.jsonl"
+    files = student_files
+    output = STUDENT_DATA / "vector_index.jsonl"
     chunks = read_jsonl(files)
     if not chunks:
-        raise SystemExit("找不到 chunks；請先完成 Step 04，或確認 sample-data 存在。")
+        raise SystemExit("找不到可建立索引的 chunks；請先完成學生指南的提示詞 3，並確認檔案位於 data/processed/。")
     vectors = ollama.embed(
         model=EMBED_MODEL,
         input=[str(chunk.get("retrieval_text", chunk["text"])) for chunk in chunks],

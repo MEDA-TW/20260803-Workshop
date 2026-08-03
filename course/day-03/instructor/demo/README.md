@@ -1,25 +1,14 @@
 # 講師成果 Demo
 
-這是 Day 3 的獨立、已驗證成果 Demo。講師在開場用它展示「可引用的校務問答助手」最後能達到的效果；學生只有在自己的資料流程或個人助手無法完成、但 Python／Streamlit／Ollama 仍可執行時，才改用它快速完成 Demo 備援完成路徑。
+這是 Day 3 的完成版 Streamlit 問答助手。它展示的順序是：公開文件 → 可引用段落 → 回答與適用年度 → 問答紀錄。學生可先看成果，再用自己的 starter 重做相同流程。
 
-它使用雲科大技職所碩士班 115 學年度公開資料，包含修課與畢業學分、英文畢業門檻的年度差異、研究生流程表單，以及 115 學年度第 1 學期行事曆。問答紀錄只寫在此資料夾的 `feedback/query_log.jsonl`，不與學生個人助手混用。
-
-## 啟動
-
-若你目前在 `day-03/starter/`，代表學生 starter 的 `.venv` 已啟用；直接回到課程根目錄再執行：
+從 Day 3 根目錄啟動：
 
 ```bash
-cd ..
+source starter/.venv/bin/activate
 python -m streamlit run instructor/demo/app.py
 ```
 
-若尚未建立 starter 的 `.venv`，才從課程根目錄執行 `source starter/.venv/bin/activate`，再執行 `python -m streamlit run instructor/demo/app.py`。
+Demo 使用講師預建索引，問答紀錄只寫在 `instructor/demo/feedback/`。它不可與學生資料混用；若學生的 Python、Streamlit 或 Ollama 無法啟動，應併機或看講師示範，而不是假裝 Demo 可在本機執行。
 
-## Demo 備援完成路徑
-
-1. 問一題有明確證據的問題，例如「115 學年度碩士班畢業至少需要幾學分？」。
-2. 查看來源與適用年度。
-3. 問另一類問題，例如「112 學年度後入學的英文門檻適用什麼規定？」或「115-1 加退選何時截止？」。
-4. 在「問答紀錄」查看這串對話的主要主題與來源。
-
-Demo 是公開參考資料的完整操作範例；理想情況仍是學生依 `STUDENT_GUIDE.md` 建立自己的資料與問答助手。
+展示時請指出：每個回答都有來源；問題的年度或對象會改變規定時，系統要求補充；資料沒有直接證據時，系統停止回答。

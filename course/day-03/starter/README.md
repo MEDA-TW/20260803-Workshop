@@ -1,8 +1,8 @@
-# Day 3 個人 starter
+# Day 3 starter
 
-這個 starter 不是完成品。你會先依 [學生指南](../STUDENT_GUIDE.md) 取得與處理四份指定校務資料、建立索引，再用 Codex 從空白建立 `rag/app.py`，完成自己的 Streamlit RAG 問答助手。
+這個 starter 是你的 Day 3 工作空間，不是完成品。它已附上講師提供的四份公開校務原始文件與來源紀錄；你用 Codex 依 [學生指南](../STUDENT_GUIDE.md) 先完成文本分析，再從空白建立 `rag/app.py`。
 
-在 Day 1 已建立的 private 練習 repo 內進入 Day 3 starter 後，確認目前資料夾有 `requirements.txt` 與 `rag/`。若你在 `day-03/` 根目錄，先執行：
+從下載並解壓縮的工作坊資料夾進入 `course/day-03/starter/`：
 
 ```bash
 cd starter
@@ -11,16 +11,28 @@ source .venv/bin/activate
 python -m pip install -r requirements.txt
 ```
 
-完成學生指南第 02～04 節後，建立自己的索引：
+你會使用的資料夾：
+
+```text
+data/raw/        講師提供的原始文件，不修改
+data/manifests/  來源紀錄，不修改
+data/markdown/   MarkItDown 轉出的文字與品質結果
+analysis/        校務文件分析表
+data/processed/  可搜尋段落與向量索引
+rag/             你用 Codex 建立的 Streamlit 介面
+feedback/        問答紀錄
+```
+
+完成提示詞 4 後，建立自己的索引：
 
 ```bash
 python scripts/build_index.py
 ```
 
-它會讀取你放入 `data/processed/` 的 chunks，輸出 `data/processed/vector_index.jsonl`。完成學生指南第 05 節的 Codex 提示詞後，才執行：
+它會讀取你放入 `data/processed/` 的 chunks，輸出 `data/processed/vector_index.jsonl`。完成提示詞 5 的 Codex 提示詞後，才執行：
 
 ```bash
 python -m streamlit run rag/app.py
 ```
 
-`sample-data/` 只保留作為索引腳本與資料格式的健康檢查，不是最後成果。講師成果 Demo 位於課程根目錄的 `instructor/demo/app.py`；若需要展示已完成範例，從 `starter/` 執行 `cd ..` 後再執行 `python -m streamlit run instructor/demo/app.py`。它與你的資料及問答紀錄完全分開。
+`sample-data/` 僅保留給維護者的程式測試，不是你的課程資料。

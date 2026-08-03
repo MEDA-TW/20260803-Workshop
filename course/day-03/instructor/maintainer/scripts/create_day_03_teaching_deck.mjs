@@ -115,8 +115,8 @@ function processNode(slide, x, y, label, sub, color, index) {
 // 01 — Title
 {
   const slide = base('Day 3｜生成式人工智慧於文本資料分析的應用', 'DAY 03', 1, { dark: true, kicker: 'YunTech Workshop · 2026 / 08 / 05' });
-  text(slide, '先完成校務資料與索引，再用 Codex 做出自己的問答助手', 0.66, 1.62, 9.5, 0.48, { fontSize: 20, color: C.slate });
-  const labels = ['指定資料', '處理與索引', 'Streamlit 介面', '可引用問答'];
+  text(slide, '先用生成式 AI 分析校務文件，再用問答助手驗證解讀', 0.66, 1.62, 9.5, 0.48, { fontSize: 20, color: C.slate });
+  const labels = ['四份原始文件', '文件分析表', '搜尋索引', '可引用問答'];
   labels.forEach((label, i) => {
     const x = 0.7 + i * 2.9;
     addRect(slide, x, 3.0, 2.35, 1.25, i === 3 ? C.teal : C.ink, true);
@@ -124,29 +124,29 @@ function processNode(slide, x, y, label, sub, color, index) {
     if (i < 3) text(slide, '→', x + 2.42, 3.38, 0.35, 0.3, { fontSize: 25, bold: true, color: C.coral, align: 'center' });
   });
   text(slide, '講師｜張育慈 Ruby', 0.68, 5.82, 3.4, 0.25, { fontSize: 13, color: C.teal });
-  note(slide, '今天的重點不是做一個聊天機器人，而是讓每個答案都能回到資料來源。', '打開課程 repo，確認已 clone Day-03 資料夾。');
+  note(slide, '今天的重點不是做一個聊天機器人，而是讓 AI 的解讀與每個答案都能回到資料來源。', '下載工作坊 ZIP，開啟 course/day-03/starter。');
 }
 
 // 02 — outcome
 {
   const slide = base('今天結束前，你會完成什麼？', 'OPENING', 2, { active: 0, kicker: '今日成果' });
   const items = [
-    ['指定公開資料', '依課程給定的四份校務資料，不自行擴大網址。'],
-    ['自己的資料索引', '保留 raw、Markdown、品質結果、chunks 與向量索引。'],
-    ['Codex 建立介面', '從空白建立 Streamlit 聊天頁、開新對話與問答紀錄。'],
+    ['四份原始文件', '講師已提供 raw 與來源紀錄，學生不必找網址。'],
+    ['校務文件分析表', '分開原文、AI 解讀、適用條件與不確定處。'],
+    ['自己的資料索引', 'Markdown、品質結果、chunks 與向量索引。'],
     ['可引用 RAG', '回答只用自己的來源；證據不足時明確停止。'],
   ];
   items.forEach((it, i) => card(slide, 0.75 + (i % 2) * 6.08, 1.55 + Math.floor(i / 2) * 2.02, 5.56, 1.52, it[0], it[1], C.white, [C.teal, C.coral, C.yellow, C.slate][i], { bodySize: 16 }));
-  text(slide, '完成順序不能倒過來：資料 → 索引 → Streamlit → RAG 問答與歷程。', 0.78, 5.92, 11.8, 0.34, { fontSize: 19, bold: true, color: C.ink, align: 'center' });
-  note(slide, '今天不是先做聊天畫面；要先把自己的校務資料變成可用索引。', '確認今天的最終成果是自己的本機問答助手。');
+  text(slide, '完成順序不能倒過來：原始文件 → 分析表 → 索引 → Streamlit 問答與歷程。', 0.78, 5.92, 11.8, 0.34, { fontSize: 19, bold: true, color: C.ink, align: 'center' });
+  note(slide, '今天不是先做聊天畫面；先讓 AI 協助讀懂並整理文件。', '確認今天有兩個成果：分析表和可引用問答助手。');
 }
 
 // 03 — timetable
 {
   const slide = base('今日時程與檢查點', 'OPENING', 3, { active: 0, kicker: '09:00 — 16:30' });
   const times = [
-    ['09:00', '工具建置', 'Codex + Ollama'], ['09:30', '固定資料範圍', '四份指定來源'], ['10:00', '取得、解析、檢查', 'raw → Markdown'],
-    ['13:30', '切塊與索引', 'chunks → vectors'], ['14:30', '建立 Streamlit', 'Codex + RAG'], ['15:40', '測試與歷程', '問答紀錄'],
+    ['09:00', '工具建置', 'Codex + Ollama'], ['09:30', '讀懂來源資料', 'raw + manifest'], ['10:00', '解析與品質檢查', 'raw → Markdown'],
+    ['13:30', '建立分析表', '原文 → AI 解讀'], ['14:30', '索引與 Streamlit', 'Codex + RAG'], ['15:40', '測試與歷程', '問答紀錄'],
   ];
   times.forEach((it, i) => {
     const x = 0.75 + i * 2.05;
@@ -163,8 +163,8 @@ function processNode(slide, x, y, label, sub, color, index) {
 {
   const slide = base('今天的成品，如何一步一步完成？', 'OVERVIEW', 4, { active: 1, kicker: '先資料、後介面' });
   const roles = [
-    ['指定資料', '依序取得四份課程指定的公開文件', C.coral],
-    ['資料處理', 'raw、Markdown、品質、chunks 與索引', C.teal],
+    ['講師提供來源', '四份 raw 文件與來源紀錄已在 starter', C.coral],
+    ['生成式 AI 分析', 'Markdown、品質、分析表、chunks 與索引', C.teal],
     ['Codex＋Streamlit', '從空白建立介面，再接上自己的 RAG', C.ink],
   ];
   roles.forEach((r, i) => {
@@ -176,8 +176,8 @@ function processNode(slide, x, y, label, sub, color, index) {
     text(slide, r[1], x + 0.35, 3.24, 2.55, 0.46, { fontSize: 13.5, color: C.slate, align: 'center', valign: 'top' });
     if (i < 2) text(slide, '→', x + 3.34, 2.85, 0.55, 0.3, { fontSize: 28, bold: true, color: C.coral, align: 'center' });
   });
-  text(slide, '關鍵順序：先取得資料與索引，最後才建立問答介面。', 1.3, 5.45, 10.7, 0.34, { fontSize: 22, bold: true, align: 'center', color: C.ink });
-  note(slide, '學生不會得到一個已完成的聊天室；資料處理完成後，才用 Codex 建立它。', '說出今天的四段順序。');
+  text(slide, '關鍵順序：先分析文件，再建立索引與問答介面。', 1.3, 5.45, 10.7, 0.34, { fontSize: 22, bold: true, align: 'center', color: C.ink });
+  note(slide, '學生不會得到一個已完成的聊天室；先完成分析表，才用 Codex 建立它。', '說出今天的四段順序。');
 }
 
 // 05 — MCP
@@ -214,30 +214,30 @@ function processNode(slide, x, y, label, sub, color, index) {
 
 // 07 — scope
 {
-  const slide = base('Step 00｜建立個人專案，再寫入固定資料範圍', 'SCOPE', 7, { active: 0, kicker: '操作 01 · 00-create-project-and-start-url' });
+  const slide = base('Step 01｜讀取講師提供的四份原始文件', 'SCOPE', 7, { active: 0, kicker: '操作 1 · 環境與來源確認' });
   card(slide, 0.72, 1.55, 5.85, 3.95, '四份固定資料', '1. 技職所碩士班修業流程\n2. 115 研究生手冊（DOCX）\n3. 語言中心英文畢業門檻\n4. 115-1 校務行事曆（PDF）', C.white, C.teal, { bodySize: 16 });
   addRect(slide, 7.15, 1.55, 5.38, 3.95, C.dark, true);
-  text(slide, '預期產物', 7.52, 1.95, 4.5, 0.3, { fontSize: 20, bold: true, color: C.teal });
-  text(slide, 'my-project/\n├── data/raw/\n├── data/manifests/\n├── data/markdown/\n├── data/processed/\n├── analysis/  rag/  feedback/', 7.58, 2.55, 4.45, 2.2, { fontSize: 15, color: C.white, fontFace: 'Consolas', valign: 'top' });
-  note(slide, '學生不選網址；直接使用課程指定的四份公開資料，降低新手操作負擔。', '貼上提示詞 02-1、02-2，建立個人資料夾與固定 scope。');
+  text(slide, 'starter 已備妥', 7.52, 1.95, 4.5, 0.3, { fontSize: 20, bold: true, color: C.teal });
+  text(slide, 'data/raw/      原始文件\ndata/manifests/ 來源紀錄\ndata/markdown/  轉換結果\nanalysis/       分析表\ndata/processed/ 索引\nrag/  feedback/  介面與歷程', 7.58, 2.4, 4.45, 2.55, { fontSize: 15, color: C.white, fontFace: 'Consolas', valign: 'top' });
+  note(slide, '學生不選網址，也不下載資料；先讀來源紀錄，知道每份文件從哪裡來。', '貼上提示詞 1，確認環境與四份來源檔。');
 }
 // 08 — crawl
 {
-  const slide = base('Step 01｜一次批次依序處理四份指定資料', 'CRAWL', 8, { active: 1, kicker: '操作 02 · 固定來源批次處理' });
+  const slide = base('Step 02｜轉換四份原始文件並做品質檢查', 'PARSE', 8, { active: 1, kicker: '操作 2 · MarkItDown 轉換' });
   const stages = [
-    ['確認規範', '只確認該來源\n是否可公開取得'], ['取得原始檔', 'HTML／DOCX／PDF\n不覆寫'], ['解析文字', 'MarkItDown\n轉為 Markdown'], ['結果總表', '取得、解析、品質\n逐份留下結果'],
+    ['讀取 manifest', '確認四份來源\n與原始檔'], ['保留原始檔', 'HTML／DOCX／PDF\n不覆寫'], ['解析文字', 'MarkItDown\n轉為 Markdown'], ['品質結果', '可分析或\n人工查看'],
   ];
   stages.forEach((s, i) => processNode(slide, 0.9 + i * 3.05, 2.05, s[0], s[1], [C.teal, C.yellow, C.coral, C.ink][i], i + 1));
-  note(slide, '學生只貼一個批次提示詞；Codex 仍必須逐份確認、處理並記錄失敗原因。', '貼上提示詞 03，完成四份指定資料的結果表。');
+  note(slide, '原始檔已準備好；學生只做本機轉換與品質判讀，不重做網頁蒐集。', '貼上提示詞 2，完成四份文件的轉換與品質結果。');
 }
 // 09 — parse
 {
-  const slide = base('Step 02｜把自己的原始資料轉成可用文字', 'PARSE', 9, { active: 2, kicker: '操作 03 · MarkItDown 與來源紀錄' });
-  card(slide, 0.8, 1.55, 3.55, 3.75, '原始資料', '每份成功來源保留 raw 檔。\n\nHTML、DOCX、PDF 都不直接拿去聊天。', C.white, C.coral, { bodySize: 16 });
-  card(slide, 4.88, 1.55, 3.55, 3.75, '轉成 Markdown', '透過 Codex 的 MarkItDown MCP，轉為可閱讀、可搜尋的 Markdown。\n\n不修改 data/raw。', C.white, C.teal, { bodySize: 16 });
-  card(slide, 8.96, 1.55, 3.55, 3.75, '品質與來源', '文件識別、URL、取得時間與品質結果都保留。\n\n這些會變成之後的引用。', C.white, C.ink, { bodySize: 16 });
-  text(slide, '先爬取 → 再解析：MarkItDown 不是網站爬蟲。', 1.2, 5.85, 10.9, 0.28, { fontSize: 20, bold: true, align: 'center' });
-  note(slide, '此時才實際確認 MarkItDown MCP，因為我們已經有一份可解析的檔案。', '提示詞 03 已批次完成取得、解析與品質檢查；講師帶學生核對任一成功來源的 raw、Markdown 與品質結果。');
+  const slide = base('Step 03｜先做校務文件分析表，再建立搜尋索引', 'ANALYZE', 9, { active: 2, kicker: '操作 3 · 原文與 AI 解讀分開' });
+  card(slide, 0.8, 1.55, 3.55, 3.75, '文件明確寫了什麼', '保留可回查的原文、年度、對象與來源段落。\n\n不把推論寫成規定。', C.white, C.coral, { bodySize: 16 });
+  card(slide, 4.88, 1.55, 3.55, 3.75, 'AI 摘要或分類', 'AI 協助整理學生行動、主題與重點。\n\n明確標示這是 AI 解讀。', C.white, C.teal, { bodySize: 16 });
+  card(slide, 8.96, 1.55, 3.55, 3.75, '不確定處與索引', '條件不足就標示不確定；只有可用文字才切成 chunks。', C.white, C.ink, { bodySize: 16 });
+  text(slide, '分析表是主要成果；索引與問答助手用來驗證它。', 1.2, 5.85, 10.9, 0.28, { fontSize: 20, bold: true, align: 'center' });
+  note(slide, '生成式 AI 的價值是協助閱讀與分類，不是取代來源或補造規定。', '貼上提示詞 3，建立含來源段落的校務文件分析表。');
 }
 
 // 10 — quality
@@ -260,7 +260,7 @@ function processNode(slide, x, y, label, sub, color, index) {
 
 // 11 — chunks
 {
-  const slide = base('Step 03｜切成 chunks，建立自己的向量索引', 'ANALYZE', 11, { active: 3, kicker: '操作 04 · 資料處理與索引' });
+  const slide = base('Step 04｜切成 chunks，建立自己的向量索引', 'ANALYZE', 11, { active: 3, kicker: '操作 4 · 資料處理與索引' });
   addRect(slide, 0.85, 1.58, 3.0, 3.7, C.white, true);
   text(slide, '一份長文件', 1.2, 1.95, 2.3, 0.3, { fontSize: 20, bold: true, align: 'center' });
   ['第一章：修業規定', '第二章：英文門檻', '第三章：行事曆'].forEach((t, i) => addRect(slide, 1.22, 2.58 + i * 0.72, 2.24, 0.46, i === 1 ? C.mist : C.pale, true));
@@ -293,7 +293,7 @@ function processNode(slide, x, y, label, sub, color, index) {
 
 // 13 — RAG
 {
-  const slide = base('Step 04｜用 Codex 建立 Streamlit RAG 問答助手', 'RAG', 13, { active: 4, kicker: '操作 05 · 05-1 → 05-4' });
+  const slide = base('Step 05｜用 Codex 建立 Streamlit RAG 問答助手', 'RAG', 13, { active: 4, kicker: '操作 5 · 一段提示詞完成介面' });
   const stages = [
     ['先建介面', 'Codex 從空白建立\nrag/app.py', C.coral], ['接上我的索引', 'vector_index.jsonl\n最多三筆', C.teal], ['本機模型', 'Ollama\nqwen2.5:3b', C.ink], ['回答＋引用', '答案、URL、年度、時間', C.teal],
   ];
@@ -302,7 +302,7 @@ function processNode(slide, x, y, label, sub, color, index) {
     card(slide, x, 2.0, 2.55, 2.2, s[0], s[1], C.white, s[2], { headingSize: 17, bodySize: 13.5 });
     if (i < 3) text(slide, '→', x + 2.62, 2.87, 0.35, 0.25, { fontSize: 25, bold: true, color: C.coral, align: 'center' });
   });
-  note(slide, '介面在資料與索引完成後才建立；學生要核對的是找回的 evidence 是否支撐回答。', '依提示詞 05-1 到 05-4 建立 Streamlit 介面，再接上自己的向量索引。');
+  note(slide, '介面在資料與索引完成後才建立；學生要核對的是找回的 evidence 是否支撐回答。', '依提示詞 5 建立 Streamlit 介面，再接上自己的向量索引。');
 }
 
 // 14 — supported chat
@@ -334,7 +334,7 @@ function processNode(slide, x, y, label, sub, color, index) {
 
 // 16 — query log
 {
-  const slide = base('Step 05｜問答紀錄：把同一串對話整理成主要主題', 'IMPROVE', 16, { active: 5, kicker: '學生自己本機的後台頁' });
+  const slide = base('問答紀錄：把同一串對話整理成主要主題', 'IMPROVE', 16, { active: 5, kicker: '學生自己本機的後台頁' });
   addRect(slide, 0.85, 1.52, 11.65, 3.95, C.white, true);
   const headers = ['query_id', 'question', 'answer_status', 'cited_chunk_ids', 'self_test_note'];
   const widths = [1.55, 3.35, 2.1, 2.3, 2.35]; let x = 1.0;
@@ -357,7 +357,7 @@ function processNode(slide, x, y, label, sub, color, index) {
     if (i < 3) text(slide, '→', x + 2.65, 2.95, 0.3, 0.3, { fontSize: 25, bold: true, color: C.coral, align: 'center' });
   });
   text(slide, '允許的改善動作：add_source · repair_parse · revise_chunking_or_metadata · improve_retrieval · revise_prompt', 0.92, 5.47, 11.55, 0.36, { fontSize: 14, color: C.slate, align: 'center' });
-  note(slide, '改善不是憑感覺調 prompt；每一項 backlog 都要回連 query_id 和證據。', '貼上提示詞 07-1，將自我測試紀錄分類為可執行的改善動作。');
+  note(slide, '改善不是憑感覺調 prompt；每一項 backlog 都要回連 query_id 和證據。', '從問答紀錄回顧哪些題目需要補資料、修解析、調整切分或改善檢索。');
 }
 
 // 18 — self-check and close
@@ -370,7 +370,7 @@ function processNode(slide, x, y, label, sub, color, index) {
     text(slide, String(i + 1), x, 2.75, 1.02, 0.22, { fontSize: 17, bold: true, color: C.white, align: 'center' });
     text(slide, p, x - 0.38, 3.86, 1.78, 0.38, { fontSize: 15, bold: true, color: C.ink, align: 'center', valign: 'mid' });
   });
-  text(slide, '完成順序：資料與索引 → Codex 建立 Streamlit → RAG 問答與歷程。', 1.2, 5.6, 10.9, 0.3, { fontSize: 20, color: C.teal, bold: true, align: 'center' });
+  text(slide, '完成順序：原始文件 → 分析表 → 索引 → Streamlit 問答與歷程。', 1.2, 5.6, 10.9, 0.3, { fontSize: 20, color: C.teal, bold: true, align: 'center' });
   text(slide, '只在本機執行｜回答附來源｜證據不足時不猜｜以原始網站最新公告為準', 1.55, 6.25, 10.2, 0.3, { fontSize: 16, color: C.slate, align: 'center' });
   note(slide, '今天不是交作業；請每個人用自己的電腦核對完整證據鏈。', '完成個人自我檢核；不公開部署或分享連結。');
 }

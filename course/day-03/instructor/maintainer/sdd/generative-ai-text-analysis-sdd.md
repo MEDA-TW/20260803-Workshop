@@ -3,25 +3,24 @@
 ## 系統流程
 
 ```text
-工具健康檢查 → start URL → crawl scope → crawler → raw + manifest → MarkItDown MCP
-→ markdown → quality check → processed chunks + vector index → Codex 建立 Streamlit → cited answer
+工具健康檢查 → 講師提供 raw + manifest → MarkItDown MCP → markdown → quality check
+→ 校務文件分析表 → processed chunks + vector index → Codex 建立 Streamlit → cited answer
 → self-test log → improvement backlog
 ```
 
-爬蟲只負責在白名單中下載並記錄原始資料；先檢查並遵守 `robots.txt` 與網站規範，且採單一連線、至少 1 秒間隔。格式以 HTTP `Content-Type`、`Content-Disposition` 檔名與 HTML 連結標題／文字交叉判定，不可只依 URL 副檔名。MarkItDown MCP 只負責將 manifest 中成功取得的本機 `file:` URI 轉為 Markdown。兩者不可混用。
+四份原始文件與成功來源紀錄由講師預先放入 starter；學生不得改寫 raw 或 manifest。MarkItDown MCP 只負責將 manifest 中的本機 `file:` URI 轉為 Markdown。來源蒐集、robots 與重新下載屬於講師／進階挑戰，不是學生必經流程。
 
 ## 資料層責任
 
 | 位置 | 責任 |
 | --- | --- |
-| `data/manifests/crawl_scope.json` | `allowed_hosts` 固定為 `tve.yuntech.edu.tw`、`lc.yuntech.edu.tw`、`aax.yuntech.edu.tw`，格式與 20／20 上限。 |
 | `data/raw/` | 不可變更的原始檔。附件存於 `data/raw/<document_id>/<original_filename>`。 |
 | `data/manifests/crawl_manifest.jsonl` | 每行一份指定來源的來源、時間、路徑、HTTP 結果與爬取狀態。 |
 | `data/markdown/` | `data/markdown/<document_id>.md` 的 MarkItDown 輸出與 `quality_report.jsonl`。 |
 | `data/processed/` | `data/processed/<document_id>.chunks.jsonl` 與只由可用 chunks 建立的本機向量索引。 |
 | `analysis/`、`rag/`、`feedback/` | 分析證據、問答證據、自我測試與改善決策。 |
 
-`crawl_scope.json` 至少有 `scope_id`、`start_url`、`allowed_hosts`、`allowed_path_prefix`、`allowed_formats`、`max_pages: 20`、`max_attachments: 20`、`request_delay_seconds: 1`、`created_at`、`notes`。`crawl_manifest.jsonl` 每行一筆 manifest，至少有 `document_id`、`scope_id`、`source_url`、`source_type`、`original_filename`、`crawled_at`、`raw_path`、`crawl_status`；失敗記錄 `error_message`，不得猜測替代網址。
+`crawl_manifest.jsonl` 每行一筆 manifest，至少有 `document_id`、`source_url`、`source_type`、`original_filename`、`crawled_at`、`raw_path`、`crawl_status` 與 `sha256`。學生只讀取此 manifest，不得猜測或替換網址。
 
 每份 Markdown 固定存為 `data/markdown/<document_id>.md`，檔頭保留 `document_id`、`source_url`、`crawled_at`、`raw_path`。`quality_report.jsonl` 每行至少有 `document_id`、`markdown_path`、`quality_status`、`checked_features`、`reason`、`checked_at`；`checked_features` 固定檢查標題階層、段落或清單、表格或掃描內容。每筆 chunk 至少有 `chunk_id`、`document_id`、`source_url`、`crawled_at`、`markdown_path`、`section_heading`、`page_or_anchor`、`chunk_text`、`quality_status`。處理狀態依序為 `collected`、`parsed`、`needs_review`、`ready_for_analysis`、`excluded`；只有 `ready_for_analysis` 可進入向量索引與檢索。
 

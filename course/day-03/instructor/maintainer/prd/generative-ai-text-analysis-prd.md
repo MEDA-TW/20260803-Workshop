@@ -2,7 +2,7 @@
 
 ## 目標
 
-以雲科大技職所、語言中心與教務處的公開內容為資料範圍，讓每位學員在自己的電腦建立可追溯的文本資料流程，回答修課、英文門檻、流程與校務日期問題。
+以四份講師提供、可追溯的雲科大公開校務文件為資料範圍，讓每位學員在自己的電腦完成生成式 AI 文本分析表，並以有引用的問答助手驗證修課、英文門檻、流程與校務日期問題。
 
 ## 使用者與情境
 
@@ -12,10 +12,10 @@
 ## 功能需求
 
 1. 在課堂完成 MarkItDown MCP、Ollama `qwen2.5:3b`、`nomic-embed-text-v2-moe`、Streamlit 與 Ollama Python 用戶端的安裝及健康檢查。
-2. 建立 `crawl_scope.json`：固定為學生指南列出的四份課程指定 URL（技職所修業流程與研究生手冊、語言中心英文門檻、教務處行事曆），格式僅 HTML／PDF／DOCX、上限為 20 個 HTML 與 20 份附件；先逐份遵守 `robots.txt` 與網站規範，再以單一連線、至少 1 秒間隔擷取。
-3. 學生以一次批次提示詞依序處理四份指定公開資料，逐份爬取成功資料並追加到 `data/manifests/crawl_manifest.jsonl`；每行記錄 `document_id`、URL、格式、取得時間、原始檔路徑與狀態，失敗另記錄原因。不得追蹤其他子網域或外部主機、登入內容或受限內容。原始檔不可覆寫，附件保留原始檔名；個別來源失敗時記錄原因並繼續其餘指定來源。
-4. 以 Codex 的 MarkItDown MCP 將成功下載的本機檔案轉為 Markdown，產出品質報告；只有 `ready_for_analysis` 文件可被處理。
-5. 將可用 Markdown 切成具完整 provenance 的 chunks，產出 `analysis/text_analysis.md`，明確分開文件證據與 AI 解讀。
+2. starter 提供四份不可修改的原始 HTML／DOCX／PDF 與 `data/manifests/crawl_manifest.jsonl`；學生不爬取、不找網址、不建立 GitHub repo。
+3. 以 Codex 的 MarkItDown MCP 將本機文件轉為 Markdown，產出品質報告；只有可分析文件可被處理。
+4. 將可用 Markdown 產出 `analysis/document_analysis.md`；每列明確分開文件原文與 AI 解讀，並記錄適用對象／年度、學生行動、不確定處與來源段落。
+5. 將可用文字切成具完整 provenance 的 chunks，再建立向量索引。
 6. 學生以 Codex 從空白建立 Streamlit `rag/app.py`，完成本機向量檢索問答與「問答紀錄」頁面：使用 `nomic-embed-text-v2-moe` 建立學生自己的本機索引、檢索最多三筆 chunks，再以 Ollama `qwen2.5:3b` 回答。問答頁必須顯示前三個 chunk、相似度、文件名稱、URL、段落位置與 `crawled_at`；問答紀錄頁只讀取該學生本機的紀錄，依對話主要主題顯示問題、回答、狀態、引用與自我測試註記。英文與日期回答必須顯示適用年度或公告日期。只有足夠證據才可呼叫回答模型；否則輸出 `insufficient_evidence` 且不生成答案。
 7. 將每次自我測試追加至 `feedback/query_log.jsonl`，並以紀錄產出改善 backlog；紀錄保留回答文字與引用，不上傳、不集中收集。改善動作僅能為 `add_source`、`repair_parse`、`revise_chunking_or_metadata`、`improve_retrieval` 或 `revise_prompt`。
 
@@ -33,4 +33,4 @@
 4. 完成四類測試：修課與畢業學分、英文門檻與年度、流程或表單、校務日期。每題必附引用；英文與日期題必須標示適用年度或公告日期。
 5. 每題的自我測試評註與改善 backlog 均可回連 query_id。
 
-所有回答畫面皆提示：「依本次爬取資料回答，請以原始網站最新公告為準。」
+所有回答畫面皆提示：「依本次課程提供的文件回答；請以原始網站最新公告為準。」

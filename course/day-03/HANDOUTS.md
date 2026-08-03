@@ -1,13 +1,12 @@
 # Day 3 一頁操作卡
 
-1. 開啟 Day 1 已建立的 private 練習 repo，進入 Day 3 資料夾後先執行 `cd starter`；確認看到 `requirements.txt` 與 `rag/`，再用 Codex Desktop 開啟。
-2. 先依 [學生指南的安裝步驟](STUDENT_GUIDE.md) 安裝 Ollama、兩個模型、Python／Streamlit；在 Codex Desktop 新 task 輸入 `/mcp` 確認 `markitdown`。不要把 `codex mcp list` 當成必需指令；健康檢查只需跑 `ollama list` 與 Python 套件匯入。
-3. 先完成四份指定校務資料與索引，再用 Codex 從空白建立 `rag/app.py`；完成後才執行 `python -m streamlit run rag/app.py`。
-4. 只貼一次學生指南的批次提示詞；Codex 會依序處理四份指定公開資料，不自行新增網址，逐份確認公開規範後再取得，維持 20／20 上限、單一連線與 1 秒間隔。
-5. 原始檔不覆寫；批次結果要保留每份資料的來源網址、取得時間、資料名稱、取得、解析與品質狀態。
-6. 個人資料流程卡住、但 Python／Streamlit／Ollama 可執行時，依講師指引啟動講師成果 Demo；不要把 Demo 資料混入自己的專案。
-7. 最後展示四類問題：學分 → 英文年度 → 流程表單 → 校務日期；每題有來源，英文與日期說明年度。
-8. 個人助手失敗但環境可跑時：在 `starter/` 執行 `cd ..`，再執行 `python -m streamlit run instructor/demo/app.py`。
-9. 課後在自己的 private repo 建立 `practice/day-03` 分支並推送成果；不需公開部署，是否提供分支連結依講師說明。
+1. 下載三天工作坊 ZIP，解壓縮後以 Codex Desktop 開啟 `course/day-03/starter/`。
+2. 在 `starter/` 建立 `.venv`、安裝 `requirements.txt`，下載兩個 Ollama 模型；在 Codex 輸入 `/mcp` 確認 `markitdown` enabled。
+3. 不要改 `data/raw/` 與 `data/manifests/crawl_manifest.jsonl`：四份校務文件與來源紀錄已由講師準備好。
+4. 依學生指南只貼五段提示詞：環境檢查 → 轉換品質 → 分析表 → 搜尋索引 → Streamlit 問答。
+5. 分析表每列都要分開「文件明確寫了什麼」與「AI 摘要或分類」，並保留年度、對象、行動、不確定處與來源段落。
+6. 問答只使用自己的索引；每題要有引用。沒有直接證據就顯示「資料不足，無法根據目前來源回答」。
+7. 測試四類問題：畢業學分、英文門檻、流程或表單、校務日期；英文與日期都確認適用年度。
+8. 問答紀錄頁要能看到每串對話的主要主題、題數、狀態與平均秒數。
 
-卡住時：貼完整錯誤文字；不要私自換模型、MCP server、資料來源或公開部署。
+卡住時：保留完整錯誤文字，找講師或 TA；不要私自換模型、MCP、資料來源或建立新專題資料夾。
