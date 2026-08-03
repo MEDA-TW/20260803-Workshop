@@ -12,7 +12,7 @@
 ## 功能需求
 
 1. 在課堂完成 MarkItDown MCP、Ollama `qwen2.5:3b`、`nomic-embed-text-v2-moe`、Streamlit 與 Ollama Python 用戶端的安裝及健康檢查。
-2. starter 提供四份不可修改的原始 HTML／DOCX／PDF 與 `data/manifests/crawl_manifest.jsonl`；學生不爬取、不找網址、不建立 GitHub repo。
+2. rag-demo 提供四份不可修改的原始 HTML／DOCX／PDF 與 `data/manifests/crawl_manifest.jsonl`；學生不爬取、不找網址、不建立 GitHub repo。
 3. 以 Codex 的 MarkItDown MCP 將本機文件轉為 Markdown，產出品質報告；只有可分析文件可被處理。
 4. 將可用 Markdown 產出 `analysis/document_analysis.md`；每列明確分開文件原文與 AI 解讀，並記錄適用對象／年度、學生行動、不確定處與來源段落。
 5. 將可用文字切成具完整 provenance 的 chunks，再建立向量索引。

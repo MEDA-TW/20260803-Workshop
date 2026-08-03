@@ -1,10 +1,14 @@
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 
-const guide = readFileSync('STUDENT_GUIDE.md', 'utf8');
+const promptFile = 'rag-demo/PROMPTS.md';
+if (!existsSync(promptFile)) {
+  console.error(`FAIL analysis-first contract: missing ${promptFile}`);
+  process.exit(1);
+}
+
+const guide = readFileSync(promptFile, 'utf8');
 const checks = [
-  '下載三天工作坊的 ZIP',
-  'course/day-03/starter/',
-  '講師提供的四份原始校務文件',
+  '四份講師提供原始校務文件',
   'crawl_manifest.jsonl',
   '提示詞 1｜環境檢查',
   '提示詞 2｜轉換與品質檢查',
@@ -41,7 +45,7 @@ if (leaked.length) {
   process.exit(1);
 }
 
-const promptCount = (guide.match(/^\*\*提示詞 [1-5]｜/gm) || []).length;
+const promptCount = (guide.match(/^## 提示詞 [1-5]｜/gm) || []).length;
 if (promptCount !== 5) {
   console.error(`FAIL analysis-first contract: expected 5 prompts, found ${promptCount}`);
   process.exit(1);

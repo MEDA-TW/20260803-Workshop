@@ -17,12 +17,12 @@
 
 ## 在課堂中使用
 
-講師要以真實資料展示時，先產生 chunks，然後直接啟動獨立 Demo；不要把講師資料複製進學生 starter：
+講師要以真實資料展示時，先產生 chunks，然後直接啟動獨立 Demo；不要把講師資料複製進學生 rag-demo：
 
 ```bash
 python3 scripts/build_live_demo.py
 cd ../..
-source starter/.venv/bin/activate
+source rag-demo/.venv/bin/activate
 python -m streamlit run instructor/demo/app.py
 ```
 

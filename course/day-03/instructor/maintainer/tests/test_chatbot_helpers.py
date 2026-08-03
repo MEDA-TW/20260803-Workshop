@@ -163,12 +163,9 @@ class ChatbotHelpersTest(unittest.TestCase):
         self.assertIn("115 學年度第 1 學期", answer)
         self.assertIn("9月18日", answer)
 
-    def test_suggested_questions_match_the_loaded_data_source(self):
+    def test_suggested_questions_match_the_student_data_source(self):
         from rag.chatbot_helpers import suggested_questions
 
-        sample_questions = suggested_questions("健康檢查 sample-data")
-        demo_questions = suggested_questions("雲科大技職所碩士班 115 學年度公開文件示範資料")
+        questions = suggested_questions("學生建立的索引")
 
-        self.assertIn("sample-data 的用途是什麼？", sample_questions)
-        self.assertNotIn("115 學年度碩士班畢業至少需要幾學分？", sample_questions)
-        self.assertIn("115 學年度碩士班畢業至少需要幾學分？", demo_questions)
+        self.assertIn("115 學年度碩士班畢業至少需要幾學分？", questions)

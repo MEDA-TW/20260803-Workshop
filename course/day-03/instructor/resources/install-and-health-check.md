@@ -2,7 +2,9 @@
 
 本課只需要本機 Python、Ollama、Streamlit 與 Codex Desktop 的 MarkItDown MCP；不需要學生安裝 Codex CLI、建立 GitHub repo 或下載課程來源資料。
 
-## 學生在 `course/day-03/starter/` 執行
+## 學生直接開啟 `course/day-03/rag-demo/` 後執行
+
+學生以 Codex Desktop 開啟 rag-demo 資料夾；Terminal 預設就在該工作空間。接著執行：
 
 ```bash
 python3 -m venv .venv

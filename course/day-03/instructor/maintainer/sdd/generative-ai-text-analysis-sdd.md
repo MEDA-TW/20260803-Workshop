@@ -8,7 +8,7 @@
 → self-test log → improvement backlog
 ```
 
-四份原始文件與成功來源紀錄由講師預先放入 starter；學生不得改寫 raw 或 manifest。MarkItDown MCP 只負責將 manifest 中的本機 `file:` URI 轉為 Markdown。來源蒐集、robots 與重新下載屬於講師／進階挑戰，不是學生必經流程。
+四份原始文件與成功來源紀錄由講師預先放入 rag-demo；學生不得改寫 raw 或 manifest。MarkItDown MCP 只負責將 manifest 中的本機 `file:` URI 轉為 Markdown。來源蒐集、robots 與重新下載屬於講師／進階挑戰，不是學生必經流程。
 
 ## 資料層責任
 

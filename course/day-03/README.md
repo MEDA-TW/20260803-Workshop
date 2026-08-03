@@ -6,14 +6,13 @@
 
 | 你是誰 | 從哪裡開始 |
 | --- | --- |
-| 學員 | [STUDENT_GUIDE.md](STUDENT_GUIDE.md) |
+| 學員 | [rag-demo/README.md](rag-demo/README.md) |
 | 講師或 TA | [instructor/README.md](instructor/README.md) |
-| 要列印操作卡 | [HANDOUTS.md](HANDOUTS.md) |
 | 要播放上課簡報 | [instructor/slides/](instructor/slides/) |
 
 ## 學生路徑
 
-下載三天工作坊 ZIP，解壓縮後開啟 `course/day-03/starter/`。starter 已有講師提供的四份公開校務原始文件與 `crawl_manifest.jsonl`，學生不必自行找網址、爬取或使用 Git。
+下載三天工作坊 ZIP 並解壓縮後，以 Codex Desktop 直接開啟 `course/day-03/rag-demo/`。rag-demo 已有講師提供的四份公開校務原始文件與 `crawl_manifest.jsonl`，學生不必自行找網址、爬取或使用 Git。
 
 ```text
 4 份原始文件 → MarkItDown 轉文字 → 校務文件分析表 → 搜尋索引 → 可引用問答助手
@@ -33,7 +32,7 @@
 
 ## 課前環境
 
-請先依 [共用工具安裝說明](https://github.com/MEDA-TW/20260803-Workshop/blob/main/docs/01-Setup.md) 準備 Python、Ollama 與 Codex Desktop；Day 3 另需在 Codex 輸入 `/mcp` 確認 `markitdown` enabled。模型為 `qwen2.5:3b`（回答）和 `nomic-embed-text-v2-moe`（搜尋索引）。詳見 [安裝與健康檢查](instructor/resources/install-and-health-check.md)。
+請準備 Python、Ollama 與 Codex Desktop；Day 3 另需在 Codex 輸入 `/mcp` 確認 `markitdown` enabled。模型為 `qwen2.5:3b`（回答）和 `nomic-embed-text-v2-moe`（搜尋索引）。詳見本日的 [安裝與健康檢查](instructor/resources/install-and-health-check.md)。
 
 ## 講師 Demo
 

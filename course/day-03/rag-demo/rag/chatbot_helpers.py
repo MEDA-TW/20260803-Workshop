@@ -27,12 +27,6 @@ def answer_evidence(question: str, ranked: list[tuple[float, dict]]) -> list[tup
 
 def suggested_questions(data_source: str) -> tuple[str, str, str]:
     """Offer only questions that the currently loaded data can support."""
-    if data_source == "健康檢查 sample-data":
-        return (
-            "sample-data 的用途是什麼？",
-            "Day 3 最後展示需要哪些內容？",
-            "資料不足時系統應怎麼做？",
-        )
     return (
         "115 學年度碩士班畢業至少需要幾學分？",
         "111 學年度前入學的碩士班英文畢業門檻是什麼？",

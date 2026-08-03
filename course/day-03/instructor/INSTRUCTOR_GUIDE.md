@@ -18,12 +18,22 @@
 
 ## 開場 Demo 劇本
 
-從 Day 3 根目錄啟動：
+從工作坊根目錄 `20260803-Workshop/` 啟動。第一次先建立並安裝 Day 3 的虛擬環境：
 
 ```bash
-source starter/.venv/bin/activate
-python -m streamlit run instructor/demo/app.py
+python3 -m venv course/day-03/rag-demo/.venv
+source course/day-03/rag-demo/.venv/bin/activate
+python3 -m pip install -r course/day-03/rag-demo/requirements.txt
 ```
+
+之後每次要播放講師 Demo，只需要執行：
+
+```bash
+source course/day-03/rag-demo/.venv/bin/activate
+python3 -m streamlit run course/day-03/instructor/demo/app.py
+```
+
+若目前不在工作坊根目錄，先執行 `pwd` 確認位置；不要直接使用 `rag-demo/.venv` 或 `instructor/demo/app.py` 這種相對路徑。
 
 依序展示：
 

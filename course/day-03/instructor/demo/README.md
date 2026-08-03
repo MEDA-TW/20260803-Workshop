@@ -1,11 +1,11 @@
 # 講師成果 Demo
 
-這是 Day 3 的完成版 Streamlit 問答助手。它展示的順序是：公開文件 → 可引用段落 → 回答與適用年度 → 問答紀錄。學生可先看成果，再用自己的 starter 重做相同流程。
+這是 Day 3 的完成版 Streamlit 問答助手。它展示的順序是：公開文件 → 可引用段落 → 回答與適用年度 → 問答紀錄。學生可先看成果，再用自己的 rag-demo 重做相同流程。
 
 從 Day 3 根目錄啟動：
 
 ```bash
-source starter/.venv/bin/activate
+source rag-demo/.venv/bin/activate
 python -m streamlit run instructor/demo/app.py
 ```
 

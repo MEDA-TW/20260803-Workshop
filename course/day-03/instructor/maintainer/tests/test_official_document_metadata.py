@@ -4,7 +4,7 @@ import unittest
 from pathlib import Path
 
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[3] / 'rag-demo'
 EXPECTED_SOURCES = {
     'tve-masters-process': 'data/raw/tve-masters-process/tve-masters-process.html',
     'tve-115-graduate-handbook': 'data/raw/tve-115-graduate-handbook/115研究生手冊.docx',
@@ -14,7 +14,7 @@ EXPECTED_SOURCES = {
 
 
 class StudentSourcePackageTest(unittest.TestCase):
-    def test_starter_ships_four_traceable_raw_documents(self):
+    def test_rag_demo_ships_four_traceable_raw_documents(self):
         manifest = ROOT / 'data' / 'manifests' / 'crawl_manifest.jsonl'
         rows = [json.loads(line) for line in manifest.read_text(encoding='utf-8').splitlines() if line.strip()]
         self.assertEqual({row['document_id'] for row in rows}, set(EXPECTED_SOURCES))
@@ -26,13 +26,13 @@ class StudentSourcePackageTest(unittest.TestCase):
             self.assertGreater(raw_path.stat().st_size, 0)
             self.assertEqual(hashlib.sha256(raw_path.read_bytes()).hexdigest(), row['sha256'])
 
-    def test_starter_does_not_ship_derived_index_or_answer_history(self):
+    def test_rag_demo_does_not_ship_derived_index_or_answer_history(self):
         self.assertFalse((ROOT / 'data' / 'processed' / 'vector_index.jsonl').exists())
         self.assertFalse((ROOT / 'feedback' / 'query_log.jsonl').exists())
 
     def test_student_app_starts_as_a_codex_building_prompt(self):
         app = (ROOT / 'rag' / 'app.py').read_text(encoding='utf-8')
-        self.assertIn('STUDENT_GUIDE.md', app)
+        self.assertIn('PROMPTS.md', app)
         self.assertNotIn('import streamlit', app)
 
 
