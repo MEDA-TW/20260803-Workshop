@@ -8,13 +8,12 @@ if (!existsSync(promptFile)) {
 
 const guide = readFileSync(promptFile, 'utf8');
 const checks = [
-  '四份講師提供原始校務文件',
-  'crawl_manifest.jsonl',
-  '提示詞 1｜環境檢查',
-  '提示詞 2｜轉換與品質檢查',
+  'data/manifests/crawl_manifest.jsonl',
+  '提示詞 1｜先確認工具',
+  '提示詞 2｜把文件轉成 Markdown 並檢查品質',
   '提示詞 3｜建立校務文件分析表',
-  '提示詞 4｜建立搜尋索引',
-  '提示詞 5｜建立可引用問答助手',
+  '提示詞 4｜切成可搜尋的小段落並建立索引',
+  '提示詞 5｜建立可引用的問答助手',
   '文件明確寫了什麼',
   '適用對象與年度',
   '學生需要採取的行動',
@@ -51,4 +50,4 @@ if (promptCount !== 5) {
   process.exit(1);
 }
 
-console.log('PASS analysis-first student contract: 5 prompts, source package, analysis table, cited Q&A');
+console.log('PASS afternoon RAG student contract: 5 prompts, fixed source package, analysis table, cited Q&A');

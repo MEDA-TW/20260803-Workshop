@@ -1,8 +1,12 @@
 # Day 3 講師用｜安裝與健康檢查
 
-本課只需要本機 Python、Ollama、Streamlit 與 Codex Desktop 的 MarkItDown MCP；不需要學生安裝 Codex CLI、建立 GitHub repo 或下載課程來源資料。
+本文件主要服務下午「校務文件 RAG」。下午需要本機 Python、Ollama、Streamlit 與 Codex Desktop 的 MarkItDown MCP；上午「論文摘要探索與主分類分析」只需 Codex Desktop 與課程提供的摘要資料，不需要以下 RAG 環境。不需要學生安裝 Codex CLI、建立 GitHub repo 或下載課程來源資料。
 
-## 學生直接開啟 `course/day-03/rag-demo/` 後執行
+## 上午環境界線
+
+上午直接開啟 `course/day-03/text-analysis-demo/`，讀取 `data/` 內講師提供的 JSONL 與 manifest，依 `PROMPTS.md` 產出分析衍生檔。上午不可修改 raw data、下載全文或新增網路來源；若資料或摘要不足，保留 `無法判定` 並記錄人工確認處。
+
+## 下午學生直接開啟 `course/day-03/rag-demo/` 後執行
 
 學生以 Codex Desktop 開啟 rag-demo 資料夾；Terminal 預設就在該工作空間。接著執行：
 

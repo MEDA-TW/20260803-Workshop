@@ -1,0 +1,62 @@
+{
+  "dataset": "NTUT and YunTech technical and vocational education graduate thesis abstracts",
+  "retrieved_at": "2026-08-03T09:56:41.767Z",
+  "source": "臺灣博碩士論文知識加值系統",
+  "scope": {
+    "academic_years": [
+      "110",
+      "111",
+      "112",
+      "113",
+      "114"
+    ],
+    "degrees": [
+      "博士",
+      "碩士"
+    ],
+    "department": "技術及職業教育研究所",
+    "queries": [
+      {
+        "school": "國立臺北科技大學",
+        "result_count": 157,
+        "search_strategy": "(asc=\"國立臺北科技大學\" and \"技術及職業教育研究所\".sdp and ((ty=\"博士\" or ty=\"碩士\")))/yr=\"110-114\"(精準)"
+      },
+      {
+        "school": "國立雲林科技大學",
+        "result_count": 98,
+        "search_strategy": "(asc=\"國立雲林科技大學\" and \"技術及職業教育研究所\".sdp and ((ty=\"博士\" or ty=\"碩士\")))/yr=\"110-114\"(精準)"
+      }
+    ]
+  },
+  "record_count": 255,
+  "fields": [
+    "corpus_id",
+    "school",
+    "department",
+    "academic_year",
+    "degree",
+    "publication_year",
+    "title",
+    "title_en",
+    "keywords",
+    "permanent_url",
+    "record_url",
+    "source_url",
+    "abstract_zh",
+    "abstract_en",
+    "retrieved_at"
+  ],
+  "missing_abstract_zh": 0,
+  "missing_permanent_url": [
+    {
+      "corpus_id": "ntut-001",
+      "title": "高齡同伴動物照護者之工作－非工作衝突經驗研究",
+      "record_url": "https://ndltd.ncl.edu.tw/cgi-bin/gs32/gsweb.cgi/ccd=upI4PG/record?r1=1&h1=1"
+    }
+  ],
+  "notes": [
+    "僅收錄公開書目與摘要，不下載電子全文。",
+    "record_url 含當次系統工作階段；引用與後續查核應優先使用 permanent_url。",
+    "此語料僅供本機課程準備與分析，未經另行確認不應直接提交至公開儲存庫。"
+  ]
+}
